@@ -1,0 +1,146 @@
+[
+  {
+    "id": "roadmap",
+    "title": "The Roadmap",
+    "icon": "Map",
+    "analogy": {
+      "role": "The Menu",
+      "description": "Your guide to becoming a Head Chef of Verification."
+    },
+    "contentMarkdown": "## \ud83d\udccb Phase 1: The Prep Work (Fundamentals)\n*Before we open the doors, we need to understand the business and prep the ingredients.*\n\n- **Page 1: The Franchise Philosophy**\n    - **Topic:** Why UVM?\n    - **Analogy:** The chaotic Street Stall (Verilog) vs. The Global Franchise (UVM).\n    - **Goal:** Understand standardization and reusability.\n\n- **Page 2: The Ingredients**\n    - **Topic:** SystemVerilog OOP Basics (Class, Object, Handle).\n    - **Analogy:** The Recipe vs. The Burger on the plate.\n    - **Goal:** Master `class`, `new()`, and `virtual interface`.\n\n- **Page 3: The Kitchen Equipment**\n    - **Topic:** The DUT (Design Under Test) & Interfaces.\n    - **Analogy:** The Grill (ALU) and the Service Window (Interface).\n    - **Goal:** Understanding the static (RTL) vs. dynamic (Testbench) boundary.\n\n## \ud83d\udc68\u200d\ud83c\udf73 Phase 2: The Staff (UVM Components)\n*Hire the team. Each person has a specific job description.*\n\n- **Page 4: The Order Ticket**\n    - **Topic:** `uvm_sequence_item` (Transaction).\n    - **Analogy:** The customer's order (Burger type, sides, drinks).\n    - **Goal:** Defining data fields (`rand`) and Menu Rules (`constraints`).\n\n- **Page 5: The Waiter**\n    - **Topic:** `uvm_sequencer`.\n    - **Analogy:** The Traffic Cop / Waiter.\n    - **Goal:** Managing the flow of orders to the kitchen (Arbitration).\n\n- **Page 6: The Line Cook**\n    - **Topic:** `uvm_driver`.\n    - **Analogy:** The Chef who flips the meat.\n    - **Goal:** Converting High-Level Orders (Objects) into Pin Wiggles (Signals).\n\n- **Page 7: The Food Critic**\n    - **Topic:** `uvm_monitor`.\n    - **Analogy:** The Silent Observer.\n    - **Goal:** Sampling signals passively and broadcasting what they see.\n\n## \ud83d\udc54 Phase 3: Management & Operations (Hierarchy)\n*Organize the staff into a functioning restaurant.*\n\n- **Page 8: The Shift Manager**\n    - **Topic:** `uvm_scoreboard`.\n    - **Analogy:** Quality Control.\n    - **Goal:** Comparing the Order Ticket (Expected) vs. The Served Burger (Actual).\n\n- **Page 9: The Work Station**\n    - **Topic:** `uvm_agent`.\n    - **Analogy:** Grouping the Cook, Waiter, and Monitor into one station.\n    - **Goal:** Understanding `is_active` (Active Cooking vs. Passive Watching).\n\n- **Page 10: The Grand Opening**\n    - **Topic:** `uvm_env` & `uvm_test`.\n    - **Analogy:** The Restaurant Building and The Health Inspection Day.\n    - **Goal:** Top-level assembly and starting the test.\n\n- **Page 11: The Franchise Launch**\n    - **Topic:** Execution Commands.\n    - **Analogy:** Turning on the Open Sign.\n    - **Goal:** Running the Simulators (VCS, Xcelium, Questa).\n\n### \ud83c\udfc1 Certification\nUpon completion of all 11 pages, you will be promoted to **Head Chef of Verification**.\n\n![UVMBurger Certification](images/CertifiedUVm.jpg)",
+    "codeSnippet": "// Your Journey Starts Here\nmodule uvm_journey;\n  initial begin\n    $display(\"Loading Roadmap...\");\n  end\nendmodule\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "intro",
+    "title": "The Franchise Philosophy",
+    "icon": "Store",
+    "analogy": {
+      "role": "The Mission",
+      "description": "Verify a simple ALU (Add/Sub) using a Burger Shop workflow."
+    },
+    "contentMarkdown": "## The Chaos of the Street Stall (Verilog Testbenches)\nImagine a burger stand where the chef just throws meat at the wall. Sometimes you get a burger, sometimes you get a mess.\nIn the old days of Verilog testbenches, every engineer was a \"Street Stall Chef\".\n\n| Feature | Street Stall (Verilog) | Global Franchise (UVM) |\n| :--- | :--- | :--- |\n| **Standardization** | None. Every chef cooks differently. | **Strict.** Every shop operates identically. |\n| **Reusability** | Low. Hard to move the \"Chef\" to a new spot. | **High.** Move the \"Fry Station\" anywhere. |\n| **Scalability** | Chaos. Hard to serve 1,000 customers. | **Massive.** Automated for high volume. |\n| **Quality** | Visual Inspection (Staring at the grill). | **Automated.** Sensors and checklists. |\n\n## The UVMBurger Way (UVM)\nUVM (Universal Verification Methodology) is our **Franchise Manual**. It imposes strict rules so that:\n1.  **A Driver is always a Driver:** Whether you are verifying a CPU or a GPU, the \"Chef\" role is the same.\n2.  **Plug-and-Play:** You can take a verification component (Agent) from one project and drop it into another with zero friction.\n3.  **Automation:** We don't just cook one burger; we generate thousands of random orders to stress-test the kitchen.\n\n## What You Will Master\nBy the end of this manual, you will be a **Head Chef of Verification**.\n- **OOP Basics:** The ingredients of modern verification.\n- **UVM Phases:** The strict schedule of the restaurant (Prep -> Service -> Cleanup).\n- **TLM (Transaction Level Modeling):** How the Waiter talks to the Chef.\n- **Coverage:** How to know when you've served enough burgers.",
+    "codeSnippet": "// Example of standardized reporting\n`uvm_info(\"FRANCHISE\", \"Welcome to UVMBurger! The grill is hot.\", UVM_LOW)\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "oop-basics",
+    "title": "The Ingredients (OOP Basics)",
+    "icon": "FlaskConical",
+    "analogy": {
+      "role": "The Recipe",
+      "description": "Class = Recipe Card. Object = The Burger. Inheritance = Secret Menu."
+    },
+    "contentMarkdown": "## Class vs. Object (The Blueprint vs. The Building)\nTo run a franchise, you need to understand Object-Oriented Programming (OOP).\n- **Class (The Recipe Card):** This is just a piece of paper. It lists ingredients (variables) and cooking steps (functions). You cannot eat the paper.\n- **Object (The Burger):** This is the physical, edible thing created from the recipe. `Burger my_lunch = new();` creates a real burger object in memory.\n\n## Inheritance (The Secret Menu)\nWe don't rewrite the entire menu just to add a slice of cheese. We take the existing `Burger` recipe and **extend** it.\n- We create a new class `CheeseBurger` that inherits everything from `Burger`.\n- We don't need to re-define \"bun\" or \"meat\". We just add `bit has_cheese = 1;`.\n\n## Polymorphism (The Manager's Magic)\nThe Manager (Testbench) doesn't want to know if it's a Hamburger or a Cheeseburger. They just want to shout \"COOK IT!\".\n- **Virtual Functions:** By marking `cook()` as `virtual`, we allow child classes to override it.\n- If the Manager holds a generic `Burger` handle that points to a `CheeseBurger`, calling `cook()` will run the **Cheeseburger's** instructions (melting cheese).",
+    "codeSnippet": "// The Base Recipe\nvirtual class Burger;\n  rand bit [3:0] patties;\n  virtual function void cook();\n    $display(\"Grilling %0d patties...\", patties);\n  endfunction\nendclass\n\n// The Extended Recipe (Inheritance)\nclass CheeseBurger extends Burger;\n  bit has_cheese = 1;\n  function void cook();\n    super.cook(); // Do the basic grilling first\n    $display(\"Melting the cheese... Delicious!\");\n  endfunction\nendclass\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "dut",
+    "title": "The Kitchen Equipment",
+    "icon": "Cpu",
+    "analogy": {
+      "role": "The Grill",
+      "description": "DUT = The Grill (Static Hardware). Interface = Service Window."
+    },
+    "contentMarkdown": "## The DUT (The Grill)\nThis is the hardware module. It is static and bolted to the floor.\n```systemverilog\nmodule burger_kitchen(\n  input        clk,\n  input        rst_n,\n  input  [1:0] order_type, // 0=Plain, 1=Cheese, 2=Veggie\n  output reg   ready_light\n);\n  // The grill logic (RTL)\n  always @(posedge clk) begin\n    if (!rst_n) ready_light <= 0;\n    else        ready_light <= 1; // Fast food!\n  end\nendmodule\n```\n\n## The Interface (The Service Window)\nThis allows our dynamic UVM classes to talk to the static hardware.\nIt bundles the wires into a single cable that we can pass around.",
+    "codeSnippet": "// The Interface (The Service Window)\ninterface burger_if(input bit clk);\n  logic       rst_n;\n  logic [1:0] order_type;\n  logic       ready_light;\nendinterface\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "seq-item",
+    "title": "The Order Ticket",
+    "icon": "ScrollText",
+    "analogy": {
+      "role": "The Order",
+      "description": "Sequence Item = Customer Order. Constraints = Menu Rules."
+    },
+    "contentMarkdown": "## The Transaction\nData travels in packets called **Transactions** (`uvm_sequence_item`).\nAnalogy: The Customer Order.\n\n## The Menu Rules (Constraints)\nWe don't just want random noise; we want valid orders.\n- **`inside`**: Limits values to valid options (Beef, Chicken, Veggie).\n- **`dist`**: Biases the randomization (80% chance of ordering a Combo).",
+    "codeSnippet": "class burger_item extends uvm_sequence_item;\n  // 1. The Food (Data)\n  rand bit [1:0] patty_type; // 0=Beef, 1=Chicken, 2=Veggie\n  rand bit       is_combo;   // 1=Fries included\n\n  // 2. The Rules (Constraints)\n  constraint c_diet { patty_type inside {0, 1, 2}; }\n  constraint c_upsell { is_combo dist { 1:=80, 0:=20 }; } // 80% chance of combo\n\n  // 3. The Magic Macros (Boilerplate)\n  `uvm_object_utils_begin(burger_item)\n    `uvm_field_int(patty_type, UVM_ALL_ON)\n    `uvm_field_int(is_combo, UVM_ALL_ON)\n  `uvm_object_utils_end\n\n  function new(string name = \"burger_item\");\n    super.new(name);\n  endfunction\nendclass\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "sequencer",
+    "title": "The Waiter",
+    "icon": "User",
+    "analogy": {
+      "role": "The Waiter",
+      "description": "Sequencer = Traffic Cop. Holds tickets and hands them to the Chef."
+    },
+    "contentMarkdown": "## The Traffic Cop\nThe Sequencer holds the tickets and hands them to the Chef one by one.\nIt manages the flow of orders to the kitchen (Arbitration).\n\n## Why do we need it?\nIf multiple customers (Sequences) are shouting orders at once, the Waiter decides who gets served first.\n- **FIFO:** First come, first served.\n- **Priority:** VIP customers go first.",
+    "codeSnippet": "// Define the Waiter class specializing in burger_items\ntypedef uvm_sequencer #(burger_item) burger_sequencer;\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "driver",
+    "title": "The Line Cook",
+    "icon": "ChefHat",
+    "analogy": {
+      "role": "The Chef",
+      "description": "Driver = Chef. Converts Orders (Objects) into Pin Wiggles."
+    },
+    "contentMarkdown": "## The Cooking Loop\nThe Chef (Driver) has a simple job:\n1.  **`get_next_item(req)`**: Ask the Waiter for an order.\n2.  **Drive Signals**: Wiggle the pins on the DUT (Grill).\n3.  **`item_done()`**: Tell the Waiter the order is ready.\n\n## Virtual Interface\nThe Driver uses the `virtual interface` handle (`vif`) to reach out of the class and touch the actual hardware signals.",
+    "codeSnippet": "class burger_driver extends uvm_driver #(burger_item);\n  `uvm_component_utils(burger_driver)\n  virtual burger_if vif; // Access to the Service Window\n\n  task run_phase(uvm_phase phase);\n    forever begin\n      // 1. Get the next ticket from the Waiter\n      seq_item_port.get_next_item(req);\n      \n      // 2. Cook it! (Drive signals to DUT)\n      @(posedge vif.clk);\n      vif.order_type <= req.patty_type;\n      `uvm_info(\"DRIVER\", $sformatf(\"Cooking patty type: %0d\", req.patty_type), UVM_MEDIUM)\n      \n      // 3. Tell Waiter we are done\n      seq_item_port.item_done();\n    end\n  endtask\nendclass\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "monitor",
+    "title": "The Food Critic",
+    "icon": "Eye",
+    "analogy": {
+      "role": "The Critic",
+      "description": "Monitor = Food Critic. Passive observer who broadcasts reviews."
+    },
+    "contentMarkdown": "## Passive Observation\nThe Critic (Monitor) watches the service window.\nIt must **never** drive signals. It only observes.\n\n## The Megaphone (Analysis Port)\nWhen the Critic sees a burger, they don't just tell one person. They shout it to the world.\n- **`uvm_analysis_port`**: A one-to-many broadcast channel.\n- Anyone who cares (Scoreboard, Coverage Collector) can listen.",
+    "codeSnippet": "class burger_monitor extends uvm_monitor;\n  `uvm_component_utils(burger_monitor)\n  virtual burger_if vif;\n  uvm_analysis_port #(burger_item) item_collected_port; // The Megaphone\n\n  task run_phase(uvm_phase phase);\n    forever begin\n      @(posedge vif.clk);\n      // 1. Spy on the window\n      if (vif.ready_light == 1) begin\n        burger_item item = burger_item::type_id::create(\"item\");\n        item.patty_type = vif.order_type; // Reconstruct the order\n        \n        // 2. Broadcast to the world\n        item_collected_port.write(item);\n      end\n    end\n  endtask\nendclass\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "scoreboard",
+    "title": "The Shift Manager",
+    "icon": "ClipboardCheck",
+    "analogy": {
+      "role": "Quality Control",
+      "description": "Scoreboard = Manager. Compares Order (Expected) vs Burger (Actual)."
+    },
+    "contentMarkdown": "## Quality Control\nThe Manager ensures the Order matches the Result.\n- They receive the \"Actual Burger\" from the Monitor.\n- They compare it against the \"Expected Order\".\n- If they match, great! If not, **UVM_ERROR**.\n\n## Analysis Imp\nThe Scoreboard uses an `uvm_analysis_imp` to receive the broadcast from the Monitor.\nIt implements the `write()` function to process the incoming transaction.",
+    "codeSnippet": "class burger_scoreboard extends uvm_scoreboard;\n  `uvm_component_utils(burger_scoreboard)\n  \n  // Mailbox to receive reviews\n  uvm_analysis_imp #(burger_item, burger_scoreboard) analysis_export;\n\n  // This triggers whenever the Monitor shouts \"Found one!\"\n  function void write(burger_item item);\n    if (item.patty_type == 2) \n      `uvm_info(\"SCOREBOARD\", \"Veggie burger served correctly!\", UVM_LOW)\n    else\n      `uvm_info(\"SCOREBOARD\", \"Meat burger served.\", UVM_LOW)\n  endfunction\nendclass\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "agent",
+    "title": "The Work Station",
+    "icon": "Network",
+    "analogy": {
+      "role": "The Station",
+      "description": "Agent = Work Station. Bundles Chef, Waiter, and Critic."
+    },
+    "contentMarkdown": "## The Station\nAn Agent bundles the components related to a specific interface.\n- **Active Agent:** Has a Driver and Sequencer. It drives traffic. (The Kitchen)\n- **Passive Agent:** Only has a Monitor. It just watches. (The Health Inspector)\n\n## Configuration\nWe use `get_is_active()` to decide whether to build the Driver and Sequencer.\nThis makes the Agent reusable in different environments.",
+    "codeSnippet": "class burger_agent extends uvm_agent;\n  `uvm_component_utils(burger_agent)\n\n  burger_sequencer sequencer;\n  burger_driver    driver;\n  burger_monitor   monitor;\n\n  function void build_phase(uvm_phase phase);\n    monitor = burger_monitor::type_id::create(\"monitor\", this);\n\n    // Only hire cooking staff if ACTIVE\n    if (get_is_active() == UVM_ACTIVE) begin\n      sequencer = burger_sequencer::type_id::create(\"sequencer\", this);\n      driver    = burger_driver::type_id::create(\"driver\", this);\n    end\n  endfunction\n\n  function void connect_phase(uvm_phase phase);\n    if (get_is_active() == UVM_ACTIVE) begin\n      // Connect Waiter to Chef\n      driver.seq_item_port.connect(sequencer.seq_item_export);\n    end\n  endfunction\nendclass\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "env-test",
+    "title": "The Grand Opening",
+    "icon": "Play",
+    "analogy": {
+      "role": "The Restaurant",
+      "description": "Env = Restaurant. Test = Opening Day."
+    },
+    "contentMarkdown": "## The Environment (The Floor Plan)\nThe Environment (`uvm_env`) is the container for the whole testbench.\nIt connects the Agent (Station) to the Scoreboard (Manager).\n\n## The Test (Opening Day)\nThe Test (`uvm_test`) is the top-level component.\n- It builds the Environment.\n- It starts the Sequence (Traffic).\n- It manages **Objections** (Opening and Closing the shop).",
+    "codeSnippet": "// The Environment (The Floor Plan)\nclass burger_env extends uvm_env;\n  burger_agent      agent;\n  burger_scoreboard scoreboard;\n  function void connect_phase(uvm_phase phase);\n    // Connect Critic (Monitor) to Manager (Scoreboard)\n    agent.monitor.item_collected_port.connect(scoreboard.analysis_export);\n  endfunction\nendclass\n\n// The Test (Opening Day)\nclass burger_test extends uvm_test;\n  burger_env env;\n  task run_phase(uvm_phase phase);\n    burger_sequence seq = burger_sequence::type_id::create(\"seq\");\n    phase.raise_objection(this); // Open the shop\n    seq.start(env.agent.sequencer); // Start taking orders\n    phase.drop_objection(this);  // Close the shop\n  endtask\nendclass\n",
+    "codeLanguage": "systemverilog"
+  },
+  {
+    "id": "launch",
+    "title": "The Franchise Launch",
+    "icon": "Rocket",
+    "analogy": {
+      "role": "Execution",
+      "description": "Running the Simulators (VCS, Xcelium, Questa)."
+    },
+    "contentMarkdown": "## Turning on the Open Sign\nYou've built the kitchen, hired the staff, and prepped the food. Now it's time to run the business.\n\n### 1. VCS (Synopsys)\nThe \"Fast Food Giant\" approach.\n- `-sverilog`: Enable SystemVerilog.\n- `-ntb_opts uvm`: Use built-in UVM.\n- `-R`: Run immediately.\n\n### 2. Xcelium / IES (Cadence)\nThe \"Gourmet Experience\" approach.\n- `-uvm`: Enable UVM.\n- `+UVM_TESTNAME`: Tell UVM which test to run.\n\n### 3. Questa (Siemens/Mentor)\nThe \"Classic Diner\" approach.\n- `vlog`: Compile.\n- `vsim`: Simulate.",
+    "codeSnippet": "# 1. VCS (Synopsys)\nvcs -sverilog -ntb_opts uvm +incdir+src top.sv -R +UVM_TESTNAME=burger_test\n\n# 2. Xcelium (Cadence)\nxrun -uvm +incdir+src top.sv +UVM_TESTNAME=burger_test\n\n# 3. Questa (Siemens)\nvlog -sv +incdir+src +incdir+$UVM_HOME/src top.sv\nvsim top -do \"run -all; quit\" +UVM_TESTNAME=burger_test\n",
+    "codeLanguage": "bash"
+  }
+]
