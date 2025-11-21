@@ -40,7 +40,28 @@ Welcome to the **UVM Burger Shop**, an interactive educational platform that tea
 
 ## 🌐 Deployment (GitHub Pages)
 
-This project is configured for deployment to GitHub Pages.
+This project is configured for **automatic deployment** to GitHub Pages using GitHub Actions.
+
+### Automated Deployment (Recommended)
+
+1.  **Enable GitHub Pages**:
+    - Go to your repository **Settings** → **Pages**.
+    - Under "Build and deployment", select **Source**: "GitHub Actions".
+
+2.  **Push to Main**:
+    ```bash
+    git add .
+    git commit -m "Your commit message"
+    git push origin main
+    ```
+    The workflow will automatically build and deploy your site.
+
+3.  **Access Your Site**:
+    Your site will be live at: `https://<YOUR_USERNAME>.github.io/<REPO_NAME>/`
+
+### Manual Deployment (Alternative)
+
+If you prefer to deploy manually:
 
 1.  **Update `vite.config.js`**:
     Ensure the `base` property matches your repository name:
@@ -58,3 +79,4 @@ This project is configured for deployment to GitHub Pages.
 ## 📜 License
 
 MIT
+
