@@ -97,10 +97,54 @@ The **`uvm_analysis_imp`** is the receiving end of TLM communication:
 ## Beyond Simple Comparison
 
 Advanced scoreboards can:
-- **Track Coverage**: Did we test all burger types?
 - **Performance Metrics**: How long did each order take?
 - **Error Injection**: Intentionally break things to test error handling
 - **Self-Checking**: Generate expected values using a golden model
+
+## Functional Coverage (Did we test everything?)
+
+Just because tests passed doesn't mean we tested **everything**. Functional coverage tracks what scenarios occurred.
+
+```systemverilog
+class burger_coverage extends uvm_subscriber #(burger_item);
+  `uvm_component_utils(burger_coverage)
+  
+  burger_item item;
+  
+  // Define what to track
+  covergroup burger_cg;
+    // Track patty types
+    patty_cp: coverpoint item.patty_type {
+      bins beef    = {0};
+      bins chicken = {1};
+      bins veggie  = {2};
+    }
+    
+    // Track combos
+    combo_cp: coverpoint item.is_combo {
+      bins yes = {1};
+      bins no  = {0};
+    }
+    
+    // Cross coverage: Did we test EVERY patty with EVERY combo option?
+    all_combos: cross patty_cp, combo_cp;
+  endgroup
+  
+  function new(string name, uvm_component parent);
+    super.new(name, parent);
+    burger_cg = new(); // Create the covergroup
+  endfunction
+  
+  function void write(burger_item t);
+    item = t;
+    burger_cg.sample(); // Mark this scenario as "tested"
+  endfunction
+endclass
+```
+
+**Why Coverage Matters:**
+- **100% Pass** with **10% Coverage** = You missed 90% of the features!
+- **Goal**: 100% Pass AND 100% Coverage.
 
 ## Key Takeaways
 

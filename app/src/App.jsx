@@ -9,6 +9,8 @@ import Navigation from './components/Navigation';
 import BurgerGraphic from './components/BurgerGraphic';
 import CommentSection from './components/CommentSection';
 import Quiz from './components/Quiz';
+import UVMArchitectureViz from './components/UVMArchitectureViz';
+import MermaidDiagram from './components/MermaidDiagram';
 import modulesData from './data/modules.json';
 
 function App() {
@@ -128,6 +130,16 @@ function App() {
                 // Code
                 code({ node, inline, className, children, ...props }) {
                   const match = /language-(\w+)/.exec(className || '')
+                  const lang = match ? match[1] : '';
+
+                  if (!inline && lang === 'uvm-viz') {
+                    return <UVMArchitectureViz />;
+                  }
+
+                  if (!inline && lang === 'mermaid') {
+                    return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+                  }
+
                   return !inline && match ? (
                     <CodeBlock
                       code={String(children).replace(/\n$/, '')}

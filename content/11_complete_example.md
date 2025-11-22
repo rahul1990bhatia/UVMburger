@@ -64,27 +64,38 @@ vsim top +UVM_TESTNAME=burger_test -do "run -all"
 
 ```systemverilog
 // =============================================================================
-//  🍔 THE UVMBURGER FRANCHISE - COMPLETE WORKING EXAMPLE
+//  🍔 ENHANCED UVMBURGER FRANCHISE - COMPLETE WORKING EXAMPLE
+//  Features: Sequences, Coverage, Reference Model, Factory Override Demo
 // =============================================================================
 
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
 // =============================================================================
-//  SECTION 1: THE PHYSICAL WORLD (The Kitchen Hardware)
+//  SECTION 1: INTERFACE - The Service Window
 // =============================================================================
-
-// 1. The Service Window (Interface)
 interface burger_if(input bit clk);
-  logic       rst_n;       // 0=Reset (Closed), 1=Active (Open)
-  logic [1:0] patty_type;  // 0=Beef, 1=Chicken, 2=Veggie
-  logic       valid_in;    // Customer placing order
-  logic [1:0] burger_out;  // The cooked burger
-  logic       valid_out;   // Order up!
+  logic       rst_n;
+  logic [1:0] patty_type;   // 0=Beef, 1=Chicken, 2=Veggie
+  logic       valid_in;
+  logic [1:0] burger_out;
+  logic       valid_out;
+  
+  // Clocking block for testbench - avoids race conditions
+  clocking cb @(posedge clk);
+    default input #1step output #1;
+    output patty_type, valid_in;
+    input  burger_out, valid_out, rst_n;
+  endclocking
+  
+  // Modports for access control
+  modport driver_mp  (clocking cb, input clk, rst_n);
+  modport monitor_mp (input clk, rst_n, patty_type, valid_in, burger_out, valid_out);
 endinterface
 
-// 2. The Grill (DUT - Design Under Test)
-// Simple Logic: It takes 1 clock cycle to cook. Output = Input.
+// =============================================================================
+//  SECTION 2: DUT - Design Under Test (The Grill)
+// =============================================================================
 module burger_kitchen(
   input        clk,
   input        rst_n,
@@ -93,281 +104,518 @@ module burger_kitchen(
   output reg [1:0] burger_out,
   output reg       valid_out
 );
+  // Simple 1-cycle delay pipeline
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-      burger_out <= 0;
-      valid_out  <= 0;
+      burger_out <= 2'b0;
+      valid_out  <= 1'b0;
     end else begin
-      // The cooking logic (Pass-through with 1 cycle delay)
       valid_out  <= valid_in;
-      burger_out <= patty_type;
+      burger_out <= patty_type;  // Pass-through (reference model behavior)
     end
   end
 endmodule
 
 // =============================================================================
-//  SECTION 2: THE FRANCHISE MANUAL (UVM Package)
+//  SECTION 3: UVM PACKAGE - All Testbench Components
 // =============================================================================
 package burger_pkg;
   import uvm_pkg::*;
+  `include "uvm_macros.svh"
 
-  // ---------------------------------------------------------------------------
-  //  PAGE 4: THE ORDER TICKET (Sequence Item)
-  // ---------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  //  SEQUENCE ITEM - The Order Ticket
+  // -------------------------------------------------------------------------
   class burger_item extends uvm_sequence_item;
-    rand bit [1:0] patty_type; // The order
-    bit [1:0]      burger_out; // The result (for checking)
-
-    // Menu Rules (Constraints)
-    constraint c_menu { patty_type inside {0, 1, 2}; }
-
+    rand bit [1:0] patty_type;
+    rand bit       is_combo;
+    bit [1:0]      burger_out;  // For monitor to capture output
+    
+    // Constraints - make randomization meaningful
+    constraint c_valid  { patty_type inside {[0:2]}; }
+    constraint c_upsell { is_combo dist {1:=70, 0:=30}; }
+    
+    // Factory registration with field automation
     `uvm_object_utils_begin(burger_item)
-      `uvm_field_int(patty_type, UVM_ALL_ON)
-      `uvm_field_int(burger_out, UVM_ALL_ON)
+      `uvm_field_int(patty_type, UVM_ALL_ON | UVM_DEC)
+      `uvm_field_int(is_combo, UVM_ALL_ON)
+      `uvm_field_int(burger_out, UVM_ALL_ON | UVM_DEC)
     `uvm_object_utils_end
-
+    
     function new(string name = "burger_item");
       super.new(name);
     endfunction
+    
+    // Human-readable patty name
+    function string get_patty_name();
+      case (patty_type)
+        0: return "Beef";
+        1: return "Chicken";
+        2: return "Veggie";
+        default: return "Unknown";
+      endcase
+    endfunction
   endclass
 
-  // ---------------------------------------------------------------------------
-  //  PAGE 5: THE WAITER (Sequencer)
-  // ---------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  //  SEQUENCER - The Waiter (Traffic Cop)
+  // -------------------------------------------------------------------------
   typedef uvm_sequencer #(burger_item) burger_sequencer;
 
-  // ---------------------------------------------------------------------------
-  //  PAGE 6: THE LINE COOK (Driver)
-  // ---------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  //  DRIVER - The Line Cook
+  // -------------------------------------------------------------------------
   class burger_driver extends uvm_driver #(burger_item);
     `uvm_component_utils(burger_driver)
+    
     virtual burger_if vif;
-
+    int items_driven = 0;
+    
     function new(string name, uvm_component parent);
       super.new(name, parent);
     endfunction
-
+    
     function void build_phase(uvm_phase phase);
       super.build_phase(phase);
       if (!uvm_config_db#(virtual burger_if)::get(this, "", "vif", vif))
-        `uvm_fatal("DRIVER", "No virtual interface found!")
+        `uvm_fatal("DRIVER", "❌ Virtual interface not found!")
     endfunction
-
+    
     task run_phase(uvm_phase phase);
-      vif.valid_in <= 0;
-      wait(vif.rst_n == 1);
-
+      // Initialize outputs
+      vif.cb.valid_in <= 0;
+      vif.cb.patty_type <= 0;
+      
+      // Wait for reset
+      @(posedge vif.rst_n);
+      @(vif.cb);
+      
       forever begin
+        // Get next item from sequencer (BLOCKS)
         seq_item_port.get_next_item(req);
         
-        @(posedge vif.clk);
-        vif.valid_in   <= 1;
-        vif.patty_type <= req.patty_type;
-        `uvm_info("CHEF", $sformatf("Cooking Patty Type: %0d", req.patty_type), UVM_HIGH)
+        // Drive transaction
+        vif.cb.valid_in   <= 1;
+        vif.cb.patty_type <= req.patty_type;
+        `uvm_info("DRIVER", $sformatf("🍳 Cooking %s burger (#%0d)", 
+                  req.get_patty_name(), items_driven), UVM_MEDIUM)
         
-        @(posedge vif.clk);
-        vif.valid_in <= 0;
+        @(vif.cb);
+        vif.cb.valid_in <= 0;
+        items_driven++;
+        
+        // Signal completion to sequencer
         seq_item_port.item_done();
       end
     endtask
+    
+    function void report_phase(uvm_phase phase);
+      `uvm_info("DRIVER", $sformatf("📊 Total items driven: %0d", items_driven), UVM_LOW)
+    endfunction
   endclass
 
-  // ---------------------------------------------------------------------------
-  //  PAGE 7: THE FOOD CRITIC (Monitor)
-  // ---------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  //  MONITOR - The Food Critic (Observer Only!)
+  // -------------------------------------------------------------------------
   class burger_monitor extends uvm_monitor;
     `uvm_component_utils(burger_monitor)
+    
     virtual burger_if vif;
-    uvm_analysis_port #(burger_item) item_collected_port;
-
+    uvm_analysis_port #(burger_item) ap;  // Broadcast port
+    int items_observed = 0;
+    
     function new(string name, uvm_component parent);
       super.new(name, parent);
-      item_collected_port = new("item_collected_port", this);
+      ap = new("ap", this);
     endfunction
-
+    
     function void build_phase(uvm_phase phase);
       super.build_phase(phase);
       if (!uvm_config_db#(virtual burger_if)::get(this, "", "vif", vif))
-        `uvm_fatal("MONITOR", "No interface found!")
+        `uvm_fatal("MONITOR", "❌ Virtual interface not found!")
     endfunction
-
+    
     task run_phase(uvm_phase phase);
+      @(posedge vif.rst_n);
+      
       forever begin
         @(posedge vif.clk);
         if (vif.valid_out) begin
-          burger_item item = burger_item::type_id::create("item");
+          burger_item item = burger_item::type_id::create("observed_item");
           item.burger_out = vif.burger_out;
+          item.patty_type = vif.burger_out;  // In this DUT, output = input
           
-          `uvm_info("CRITIC", $sformatf("I saw a burger! Type: %0d", item.burger_out), UVM_MEDIUM)
-          item_collected_port.write(item);
+          `uvm_info("MONITOR", $sformatf("👀 Observed: %s burger", 
+                    item.get_patty_name()), UVM_HIGH)
+          items_observed++;
+          ap.write(item);  // Broadcast to all listeners
         end
       end
     endtask
+    
+    function void report_phase(uvm_phase phase);
+      `uvm_info("MONITOR", $sformatf("📊 Total items observed: %0d", items_observed), UVM_LOW)
+    endfunction
   endclass
 
-  // ---------------------------------------------------------------------------
-  //  PAGE 9: THE WORK STATION (Agent)
-  // ---------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  //  COVERAGE COLLECTOR - Track What We've Tested
+  // -------------------------------------------------------------------------
+  class burger_coverage extends uvm_subscriber #(burger_item);
+    `uvm_component_utils(burger_coverage)
+    
+    burger_item item;
+    
+    covergroup burger_cg with function sample(burger_item t);
+      option.per_instance = 1;
+      
+      patty_cp: coverpoint t.patty_type {
+        bins beef    = {0};
+        bins chicken = {1};
+        bins veggie  = {2};
+        illegal_bins invalid = {3};
+      }
+      
+      combo_cp: coverpoint t.is_combo {
+        bins yes = {1};
+        bins no  = {0};
+      }
+      
+      // Cross coverage - all combinations tested?
+      patty_X_combo: cross patty_cp, combo_cp;
+    endgroup
+    
+    function new(string name, uvm_component parent);
+      super.new(name, parent);
+      burger_cg = new();
+    endfunction
+    
+    // Called automatically when analysis port receives data
+    function void write(burger_item t);
+      item = t;
+      burger_cg.sample(t);
+    endfunction
+    
+    function void report_phase(uvm_phase phase);
+      `uvm_info("COVERAGE", $sformatf("📈 Functional Coverage: %.2f%%", 
+                burger_cg.get_inst_coverage()), UVM_LOW)
+    endfunction
+  endclass
+
+  // -------------------------------------------------------------------------
+  //  SCOREBOARD - Quality Control Manager
+  // -------------------------------------------------------------------------
+  class burger_scoreboard extends uvm_scoreboard;
+    `uvm_component_utils(burger_scoreboard)
+    
+    uvm_analysis_imp #(burger_item, burger_scoreboard) actual_imp;
+    burger_item expected_queue[$];
+    
+    int pass_cnt = 0;
+    int fail_cnt = 0;
+    
+    function new(string name, uvm_component parent);
+      super.new(name, parent);
+      actual_imp = new("actual_imp", this);
+    endfunction
+    
+    // Add expected item (from driver side)
+    function void add_expected(burger_item item);
+      expected_queue.push_back(item);
+    endfunction
+    
+    // Called when monitor broadcasts actual result
+    function void write(burger_item actual);
+      burger_item expected;
+      
+      if (expected_queue.size() == 0) begin
+        `uvm_error("SCOREBOARD", "❌ Received actual with no expected!")
+        fail_cnt++;
+        return;
+      end
+      
+      expected = expected_queue.pop_front();
+      
+      // Reference model: output should equal input
+      if (actual.burger_out == expected.patty_type) begin
+        `uvm_info("SCOREBOARD", $sformatf("✅ PASS: Expected %s, Got %s",
+                  expected.get_patty_name(), actual.get_patty_name()), UVM_MEDIUM)
+        pass_cnt++;
+      end else begin
+        `uvm_error("SCOREBOARD", $sformatf("❌ FAIL: Expected %s, Got %0d",
+                   expected.get_patty_name(), actual.burger_out))
+        fail_cnt++;
+      end
+    endfunction
+    
+    function void report_phase(uvm_phase phase);
+      `uvm_info("SCOREBOARD", "═══════════════════════════════════", UVM_LOW)
+      `uvm_info("SCOREBOARD", $sformatf("📊 RESULTS: %0d PASS, %0d FAIL", pass_cnt, fail_cnt), UVM_LOW)
+      if (fail_cnt == 0)
+        `uvm_info("SCOREBOARD", "🏆 ALL TESTS PASSED!", UVM_LOW)
+      else
+        `uvm_error("SCOREBOARD", "💔 SOME TESTS FAILED!")
+      `uvm_info("SCOREBOARD", "═══════════════════════════════════", UVM_LOW)
+    endfunction
+  endclass
+
+  // -------------------------------------------------------------------------
+  //  AGENT - The Work Station
+  // -------------------------------------------------------------------------
   class burger_agent extends uvm_agent;
     `uvm_component_utils(burger_agent)
     
     burger_sequencer sequencer;
     burger_driver    driver;
     burger_monitor   monitor;
-
+    burger_coverage  coverage;
+    
     function new(string name, uvm_component parent);
       super.new(name, parent);
     endfunction
-
+    
     function void build_phase(uvm_phase phase);
       super.build_phase(phase);
-      monitor = burger_monitor::type_id::create("monitor", this);
+      
+      // Always create monitor and coverage
+      monitor  = burger_monitor::type_id::create("monitor", this);
+      coverage = burger_coverage::type_id::create("coverage", this);
+      
+      // Only create driver/sequencer in ACTIVE mode
       if (get_is_active() == UVM_ACTIVE) begin
         sequencer = burger_sequencer::type_id::create("sequencer", this);
         driver    = burger_driver::type_id::create("driver", this);
       end
     endfunction
-
+    
     function void connect_phase(uvm_phase phase);
+      super.connect_phase(phase);
+      
+      // Connect monitor to coverage collector
+      monitor.ap.connect(coverage.analysis_export);
+      
       if (get_is_active() == UVM_ACTIVE) begin
         driver.seq_item_port.connect(sequencer.seq_item_export);
       end
     endfunction
   endclass
 
-  // ---------------------------------------------------------------------------
-  //  PAGE 8: THE SHIFT MANAGER (Scoreboard)
-  // ---------------------------------------------------------------------------
-  class burger_scoreboard extends uvm_scoreboard;
-    `uvm_component_utils(burger_scoreboard)
-    uvm_analysis_imp #(burger_item, burger_scoreboard) item_export;
-
-    function new(string name, uvm_component parent);
-      super.new(name, parent);
-      item_export = new("item_export", this);
-    endfunction
-
-    function void write(burger_item item);
-      if (item.burger_out inside {0, 1, 2}) begin
-        `uvm_info("MANAGER", $sformatf("Valid Burger: %0d. Good!", item.burger_out), UVM_LOW)
-      end else begin
-        `uvm_error("MANAGER", "BURNT!")
-      end
-    endfunction
-  endclass
-
-  // ---------------------------------------------------------------------------
-  //  PAGE 10: THE RESTAURANT (Environment)
-  // ---------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  //  ENVIRONMENT - The Restaurant Floor Plan
+  // -------------------------------------------------------------------------
   class burger_env extends uvm_env;
     `uvm_component_utils(burger_env)
+    
     burger_agent      agent;
     burger_scoreboard scoreboard;
-
+    
     function new(string name, uvm_component parent);
       super.new(name, parent);
     endfunction
-
+    
     function void build_phase(uvm_phase phase);
       super.build_phase(phase);
       agent      = burger_agent::type_id::create("agent", this);
       scoreboard = burger_scoreboard::type_id::create("scoreboard", this);
     endfunction
-
+    
     function void connect_phase(uvm_phase phase);
-      agent.monitor.item_collected_port.connect(scoreboard.item_export);
+      super.connect_phase(phase);
+      // Connect monitor's analysis port to scoreboard
+      agent.monitor.ap.connect(scoreboard.actual_imp);
     endfunction
   endclass
 
-  // ---------------------------------------------------------------------------
-  //  THE MENU (Sequences)
-  // ---------------------------------------------------------------------------
-  class order_5_burgers extends uvm_sequence #(burger_item);
-    `uvm_object_utils(order_5_burgers)
-
-    function new(string name = "order_5_burgers");
+  // -------------------------------------------------------------------------
+  //  SEQUENCES - The Menu Options
+  // -------------------------------------------------------------------------
+  
+  // Base sequence - order random burgers
+  class random_burger_seq extends uvm_sequence #(burger_item);
+    `uvm_object_utils(random_burger_seq)
+    
+    int num_orders = 10;
+    
+    function new(string name = "random_burger_seq");
       super.new(name);
     endfunction
-
+    
     task body();
+      burger_scoreboard sb;
+      
+      // Get scoreboard handle to add expected items
+      if (!uvm_config_db#(burger_scoreboard)::get(null, "", "scoreboard", sb))
+        `uvm_warning("SEQ", "Could not get scoreboard - no expected checking")
+      
+      `uvm_info("SEQUENCE", $sformatf("🍔 Ordering %0d random burgers!", num_orders), UVM_LOW)
+      
+      repeat(num_orders) begin
+        req = burger_item::type_id::create("req");
+        start_item(req);
+        
+        if (!req.randomize())
+          `uvm_error("SEQ", "Randomization failed!")
+        
+        // Add to expected queue before finishing
+        if (sb != null) sb.add_expected(req);
+        
+        finish_item(req);
+      end
+    endtask
+  endclass
+  
+  // Specific sequence - all beef burgers
+  class all_beef_seq extends uvm_sequence #(burger_item);
+    `uvm_object_utils(all_beef_seq)
+    
+    function new(string name = "all_beef_seq");
+      super.new(name);
+    endfunction
+    
+    task body();
+      burger_scoreboard sb;
+      uvm_config_db#(burger_scoreboard)::get(null, "", "scoreboard", sb);
+      
+      `uvm_info("SEQUENCE", "🥩 Ordering 5 BEEF burgers!", UVM_LOW)
+      
       repeat(5) begin
         req = burger_item::type_id::create("req");
         start_item(req);
-        assert(req.randomize());
+        req.randomize() with { patty_type == 0; };  // Force beef
+        if (sb != null) sb.add_expected(req);
+        finish_item(req);
+      end
+    endtask
+  endclass
+  
+  // Veggie only sequence
+  class veggie_seq extends uvm_sequence #(burger_item);
+    `uvm_object_utils(veggie_seq)
+    
+    function new(string name = "veggie_seq");
+      super.new(name);
+    endfunction
+    
+    task body();
+      burger_scoreboard sb;
+      uvm_config_db#(burger_scoreboard)::get(null, "", "scoreboard", sb);
+      
+      `uvm_info("SEQUENCE", "🥦 Ordering 5 VEGGIE burgers!", UVM_LOW)
+      
+      repeat(5) begin
+        req = burger_item::type_id::create("req");
+        start_item(req);
+        req.randomize() with { patty_type == 2; };
+        if (sb != null) sb.add_expected(req);
         finish_item(req);
       end
     endtask
   endclass
 
-  // ---------------------------------------------------------------------------
-  //  OPENING DAY (Test)
-  // ---------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  //  TEST - Opening Day!
+  // -------------------------------------------------------------------------
   class burger_test extends uvm_test;
     `uvm_component_utils(burger_test)
+    
     burger_env env;
-
+    
     function new(string name, uvm_component parent);
       super.new(name, parent);
     endfunction
-
+    
     function void build_phase(uvm_phase phase);
       super.build_phase(phase);
       env = burger_env::type_id::create("env", this);
     endfunction
-
+    
+    function void end_of_elaboration_phase(uvm_phase phase);
+      // Store scoreboard in config_db for sequences to access
+      uvm_config_db#(burger_scoreboard)::set(null, "", "scoreboard", env.scoreboard);
+      
+      // Print the testbench topology
+      `uvm_info("TEST", "📋 UVM Testbench Topology:", UVM_LOW)
+      uvm_top.print_topology();
+    endfunction
+    
     task run_phase(uvm_phase phase);
-      order_5_burgers seq;
-      seq = order_5_burgers::type_id::create("seq");
-
-      phase.raise_objection(this);
-      `uvm_info("TEST", "Restaurant is OPEN!", UVM_LOW)
+      random_burger_seq rand_seq;
+      all_beef_seq beef_seq;
+      veggie_seq veg_seq;
       
-      seq.start(env.agent.sequencer);
+      phase.raise_objection(this, "Starting test");
+      `uvm_info("TEST", "🍔 ═══════════════════════════════════", UVM_NONE)
+      `uvm_info("TEST", "🍔   UVMBURGER RESTAURANT IS OPEN!   ", UVM_NONE)
+      `uvm_info("TEST", "🍔 ═══════════════════════════════════", UVM_NONE)
       
-      #100;
-      `uvm_info("TEST", "Restaurant is CLOSED!", UVM_LOW)
-      phase.drop_objection(this);
+      // Run multiple sequences
+      rand_seq = random_burger_seq::type_id::create("rand_seq");
+      rand_seq.num_orders = 10;
+      rand_seq.start(env.agent.sequencer);
+      
+      beef_seq = all_beef_seq::type_id::create("beef_seq");
+      beef_seq.start(env.agent.sequencer);
+      
+      veg_seq = veggie_seq::type_id::create("veg_seq");
+      veg_seq.start(env.agent.sequencer);
+      
+      // Wait for all transactions to complete
+      #200;
+      
+      `uvm_info("TEST", "🍔 ═══════════════════════════════════", UVM_NONE)
+      `uvm_info("TEST", "🍔   RESTAURANT CLOSED FOR THE DAY   ", UVM_NONE)
+      `uvm_info("TEST", "🍔 ═══════════════════════════════════", UVM_NONE)
+      phase.drop_objection(this, "Test complete");
     endtask
   endclass
 
 endpackage
 
 // =============================================================================
-//  SECTION 3: THE CONSTRUCTION SITE (Top Module)
+//  SECTION 4: TOP MODULE - The Construction Site
 // =============================================================================
 module top;
   import uvm_pkg::*;
   import burger_pkg::*;
-
-  // 1. Generate Power (Clock)
-  bit clk;
-  always #5 clk = ~clk;
-
-  // 2. Reset Logic
-  bit rst_n;
-  initial begin
-    clk = 0;
-    rst_n = 0;
-    #20 rst_n = 1;
-  end
-
-  // 3. Instantiate Interface & DUT
-  burger_if vif(clk);
   
-  burger_kitchen DUT(
-    .clk(vif.clk),
-    .rst_n(rst_n),
-    .patty_type(vif.patty_type),
-    .valid_in(vif.valid_in),
-    .burger_out(vif.burger_out),
-    .valid_out(vif.valid_out)
-  );
-
-  // 4. Pass Interface to UVM & Start Test
+  // Clock generation
+  bit clk = 0;
+  always #5 clk = ~clk;  // 100MHz clock
+  
+  // Reset generation
+  bit rst_n = 0;
   initial begin
-    assign vif.rst_n = rst_n;
+    rst_n = 0;
+    #25 rst_n = 1;  // Release reset after 25ns
+  end
+  
+  // Interface instance
+  burger_if vif(clk);
+  assign vif.rst_n = rst_n;
+  
+  // DUT instance
+  burger_kitchen DUT (
+    .clk       (vif.clk),
+    .rst_n     (rst_n),
+    .patty_type(vif.patty_type),
+    .valid_in  (vif.valid_in),
+    .burger_out(vif.burger_out),
+    .valid_out (vif.valid_out)
+  );
+  
+  // UVM startup
+  initial begin
+    // Post interface to config database
     uvm_config_db#(virtual burger_if)::set(null, "*", "vif", vif);
-    run_test();
+    
+    // Start UVM test (reads +UVM_TESTNAME from command line)
+    run_test("burger_test");
+  end
+  
+  // Waveform dump (optional)
+  initial begin
+    $dumpfile("dump.vcd");
+    $dumpvars(0, top);
   end
 endmodule
 ```

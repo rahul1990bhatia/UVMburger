@@ -204,16 +204,11 @@ if (!uvm_config_db#(virtual burger_if)::get(this, "", "vif", vif))
 
 ## Putting It All Together
 
-**The Hierarchy:**
-```
-top (module)
-└── burger_test (uvm_test)
-    └── burger_env (uvm_env)
-        ├── burger_agent (uvm_agent)
-        │   ├── burger_sequencer
-        │   ├── burger_driver
-        │   └── burger_monitor
-        └── burger_scoreboard
+**Explore the Architecture:**
+
+Click on the components below to learn about their roles, or click "Animate Data Flow" to see how a transaction moves through the system.
+
+```uvm-viz
 ```
 
 **The Flow:**

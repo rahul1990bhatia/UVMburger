@@ -57,6 +57,61 @@ endclass
 
 The restaurant operates on a strict timeline. Everyone follows the same schedule.
 
+```mermaid
+flowchart TB
+    subgraph TIME0["⏱️ TIME 0 (No Simulation Time)"]
+        direction TB
+        subgraph BUILD["🏗️ BUILD PHASES"]
+            B1[/"build_phase<br/>(Top-Down)"/]
+            B2[/"connect_phase<br/>(Bottom-Up)"/]
+            B3[/"end_of_elaboration_phase<br/>(Bottom-Up)"/]
+        end
+        
+        B1 --> B2 --> B3
+    end
+    
+    subgraph RUNTIME["▶️ RUN TIME PHASES (Time Advances!)"]
+        direction TB
+        SOS["start_of_simulation_phase"]
+        
+        subgraph RUNPHASE["run_phase (parallel execution)"]
+            direction LR
+            R1["pre_reset_phase"]
+            R2["reset_phase"]
+            R3["post_reset_phase"]
+            R4["pre_configure_phase"]
+            R5["configure_phase"]
+            R6["post_configure_phase"]
+            R7["pre_main_phase"]
+            R8["main_phase"]
+            R9["post_main_phase"]
+            R10["pre_shutdown_phase"]
+            R11["shutdown_phase"]
+            R12["post_shutdown_phase"]
+        end
+        
+        SOS --> RUNPHASE
+        R1 --> R2 --> R3 --> R4 --> R5 --> R6 --> R7 --> R8 --> R9 --> R10 --> R11 --> R12
+    end
+    
+    subgraph CLEANUP["🧹 CLEANUP PHASES"]
+        direction TB
+        C1[/"extract_phase<br/>(Bottom-Up)"/]
+        C2[/"check_phase<br/>(Bottom-Up)"/]
+        C3[/"report_phase<br/>(Bottom-Up)"/]
+        C4[/"final_phase<br/>(Top-Down)"/]
+    end
+    
+    TIME0 --> RUNTIME --> CLEANUP
+    
+    C1 --> C2 --> C3 --> C4
+    
+    style BUILD fill:#7C3AED,color:#fff
+    style RUNTIME fill:#059669,color:#fff
+    style CLEANUP fill:#DC2626,color:#fff
+    style RUNPHASE fill:#047857,color:#fff
+```
+
 ### Time 0 Phases (Setup)
 
 **1. Build Phase (Top-Down)**
@@ -175,6 +230,47 @@ uvm_config_db#(int)::get(this, "", "num_burgers", num_burgers);
 
 ---
 
+## 4. The Magic Menu (The Factory)
+
+One of UVM's most powerful features is the **Factory**. It allows you to swap components without changing the code that uses them.
+
+### Why use `type_id::create()`?
+
+```systemverilog
+// ❌ BAD: Hard-coded. Can't change it later.
+driver = new("driver", this);
+
+// ✅ GOOD: Factory-based. Can be overridden!
+driver = burger_driver::type_id::create("driver", this);
+```
+
+### The Override Trick
+
+Imagine you want to test a "Spicy Burger" driver without rewriting the Environment.
+
+1. **Extend the Driver**:
+   ```systemverilog
+   class spicy_driver extends burger_driver;
+     // ... add spicy logic ...
+   endclass
+   ```
+
+2. **Override in the Test**:
+   ```systemverilog
+   class spicy_test extends uvm_test;
+     function void build_phase(uvm_phase phase);
+       // Tell the factory: "Whenever someone asks for a burger_driver, give them a spicy_driver instead!"
+       burger_driver::type_id::set_type_override(spicy_driver::get_type());
+       
+       super.build_phase(phase);
+     endfunction
+   endclass
+   ```
+
+**Result**: The Environment asks for a `burger_driver`, but the Factory secretly hands it a `spicy_driver`. The Environment never knows the difference!
+
+---
+
 ## Key Takeaways
 
 **Components vs Objects:**
@@ -191,5 +287,9 @@ uvm_config_db#(int)::get(this, "", "num_burgers", num_burgers);
 - The bulletin board for sharing data
 - Bridges static (top module) and dynamic (UVM classes)
 - Used in `build_phase` to configure components
+
+**Factory:**
+- Use `type_id::create()` to enable overrides
+- Allows swapping components without changing environment code
 
 These are the fundamental laws governing our UVM kitchen! 🍔⚖️
