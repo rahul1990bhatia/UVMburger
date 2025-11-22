@@ -4,12 +4,13 @@
     "title": "The Roadmap",
     "icon": "Map",
     "analogy": {
-      "role": "The Menu",
-      "description": "Your guide to becoming a Head Chef of Verification."
+      "role": "The Franchise Manual",
+      "description": "Your guide from Street Stall to Head Chef of Verification."
     },
-    "contentMarkdown": "## \ud83d\udccb Phase 1: The Prep Work (Fundamentals)\n*Before we open the doors, we need to understand the business and prep the ingredients.*\n\n- **Page 1: The Franchise Philosophy**\n    - **Topic:** Why UVM?\n    - **Analogy:** The chaotic Street Stall (Verilog) vs. The Global Franchise (UVM).\n    - **Goal:** Understand standardization and reusability.\n\n- **Page 2: The Ingredients**\n    - **Topic:** SystemVerilog OOP Basics (Class, Object, Handle).\n    - **Analogy:** The Recipe vs. The Burger on the plate.\n    - **Goal:** Master `class`, `new()`, and `virtual interface`.\n\n- **Page 3: The Kitchen Equipment**\n    - **Topic:** The DUT (Design Under Test) & Interfaces.\n    - **Analogy:** The Grill (ALU) and the Service Window (Interface).\n    - **Goal:** Understanding the static (RTL) vs. dynamic (Testbench) boundary.\n\n## \ud83d\udc68\u200d\ud83c\udf73 Phase 2: The Staff (UVM Components)\n*Hire the team. Each person has a specific job description.*\n\n- **Page 4: The Order Ticket**\n    - **Topic:** `uvm_sequence_item` (Transaction).\n    - **Analogy:** The customer's order (Burger type, sides, drinks).\n    - **Goal:** Defining data fields (`rand`) and Menu Rules (`constraints`).\n\n- **Page 5: The Waiter**\n    - **Topic:** `uvm_sequencer`.\n    - **Analogy:** The Traffic Cop / Waiter.\n    - **Goal:** Managing the flow of orders to the kitchen (Arbitration).\n\n- **Page 6: The Line Cook**\n    - **Topic:** `uvm_driver`.\n    - **Analogy:** The Chef who flips the meat.\n    - **Goal:** Converting High-Level Orders (Objects) into Pin Wiggles (Signals).\n\n- **Page 7: The Food Critic**\n    - **Topic:** `uvm_monitor`.\n    - **Analogy:** The Silent Observer.\n    - **Goal:** Sampling signals passively and broadcasting what they see.\n\n## \ud83d\udc54 Phase 3: Management & Operations (Hierarchy)\n*Organize the staff into a functioning restaurant.*\n\n- **Page 8: The Shift Manager**\n    - **Topic:** `uvm_scoreboard`.\n    - **Analogy:** Quality Control.\n    - **Goal:** Comparing the Order Ticket (Expected) vs. The Served Burger (Actual).\n\n- **Page 9: The Work Station**\n    - **Topic:** `uvm_agent`.\n    - **Analogy:** Grouping the Cook, Waiter, and Monitor into one station.\n    - **Goal:** Understanding `is_active` (Active Cooking vs. Passive Watching).\n\n- **Page 10: The Grand Opening**\n    - **Topic:** `uvm_env` & `uvm_test`.\n    - **Analogy:** The Restaurant Building and The Health Inspection Day.\n    - **Goal:** Top-level assembly and starting the test.\n\n- **Page 11: The Franchise Launch**\n    - **Topic:** Execution Commands.\n    - **Analogy:** Turning on the Open Sign.\n    - **Goal:** Running the Simulators (VCS, Xcelium, Questa).\n\n### \ud83c\udfc1 Certification\nUpon completion of all 11 pages, you will be promoted to **Head Chef of Verification**.\n\n![UVMBurger Certification](images/CertifiedUVm.jpg)",
-    "codeSnippet": "// Your Journey Starts Here\nmodule uvm_journey;\n  initial begin\n    $display(\"Loading Roadmap...\");\n  end\nendmodule\n",
-    "codeLanguage": "systemverilog"
+    "contentMarkdown": "# \ud83c\udf54 The UVMBurger Franchise Manual\n\n**\"From Street Stall to 5-Star Franchise\"**\n\nWelcome to the team! You have been hired by **UVMBurger**, the most prestigious verification franchise in the world. This manual will take you from a trainee (Verilog User) to the **Head Chef** (UVM Expert).\n\n---\n\n## Phase 1: The Fundamentals\n\n*Understanding the philosophy and gathering the ingredients.*\n\n### Chapter 1: The Franchise Philosophy\n- **Topic**: Why UVM?\n- **Analogy**: Street Stall vs. Global Franchise\n- **Goal**: Understand standardization, reusability, and automation\n\n### Chapter 2: The Ingredients\n- **Topic**: SystemVerilog OOP Basics\n- **Analogy**: Recipe vs. The Burger\n- **Goal**: Master classes, objects, inheritance, and polymorphism\n\n### Chapter 3: The Physical Location\n- **Topic**: DUT, Interfaces, and Modports\n- **Analogy**: The Grill, Service Window, and Window Rules\n- **Goal**: Understand hardware/software boundary and access control\n\n---\n\n## Phase 2: The Core Team\n\n*Meet the staff who make the restaurant run.*\n\n### Chapter 4: Meet the Team\n- **Topic**: Sequence Item, Sequencer, Driver, Monitor\n- **Analogy**: Order Ticket, Waiter, Line Cook, Food Critic\n- **Goal**: Understand the four core UVM components\n\n### Chapter 5: The Work Station\n- **Topic**: UVM Agent\n- **Analogy**: The Organized Station\n- **Goal**: Group components, understand active vs. passive modes\n\n---\n\n## Phase 3: Communication & Quality\n\n*How components talk and ensure quality.*\n\n### Chapter 6: Restaurant Communications\n- **Topic**: TLM Ports, Exports, FIFOs\n- **Analogy**: The Intercom System\n- **Goal**: Understand how components communicate without tight coupling\n\n### Chapter 7: Management & Quality Control\n- **Topic**: UVM Scoreboard\n- **Analogy**: The Shift Manager\n- **Goal**: Compare expected vs. actual results\n\n---\n\n## Phase 4: The Rules & Opening\n\n*Understanding the laws that govern the kitchen.*\n\n### Chapter 8: The Laws of the Kitchen\n- **Topic**: Components vs. Objects, Phasing, Config DB\n- **Analogy**: Staff vs. Food, The Schedule, The Bulletin Board\n- **Goal**: Master UVM mechanics and hierarchy\n\n### Chapter 9: The Grand Opening\n- **Topic**: Environment, Test, and Top Module\n- **Analogy**: Floor Plan, Opening Day, Construction Site\n- **Goal**: Bring everything together for the first simulation\n\n---\n\n## Phase 5: Launch & Mastery\n\n*Running the business and proving your expertise.*\n\n### Chapter 10: Operating Instructions\n- **Topic**: Simulator Commands\n- **Analogy**: Turning on the Open Sign\n- **Goal**: Run testbenches on VCS, Xcelium, and Questa\n\n### Chapter 11: The Grand Combo Meal\n- **Topic**: Complete Working Example\n- **Analogy**: Everything Together\n- **Goal**: Copy, paste, and run a full UVM testbench\n\n### Chapter 12: The Final Inspection \ud83c\udfc6\n- **Topic**: UVM Interview Questions\n- **Analogy**: Health Inspector's Final Exam\n- **Goal**: Prove you're ready to run your own verification franchise!\n\n---\n\n## \ud83c\udf93 Your Certification Path\n\nUpon completion of all 12 chapters, you will be promoted to **Head Chef of Verification**.\n\nYou'll be able to:\n\u2705 Build reusable verification environments  \n\u2705 Debug complex testbenches  \n\u2705 Interview confidently for verification roles  \n\u2705 Verify chips from simple ALUs to complex SoCs  \n\n---\n\n**Let's get cooking!** \ud83c\udf54\ud83d\udc68\u200d\ud83c\udf73",
+    "codeSnippet": "// Your Journey: From Zero to UVM Hero\nmodule uvm_journey;\n  initial $display(\"Welcome to the UVMBurger Franchise!\");\nendmodule\n",
+    "codeLanguage": "systemverilog",
+    "quiz": null
   },
   {
     "id": "intro",
@@ -21,7 +22,39 @@
     },
     "contentMarkdown": "## The Chaos of the Street Stall (Verilog Testbenches)\nImagine a burger stand where the chef just throws meat at the wall. Sometimes you get a burger, sometimes you get a mess.\nIn the old days of Verilog testbenches, every engineer was a \"Street Stall Chef\".\n\n| Feature | Street Stall (Verilog) | Global Franchise (UVM) |\n| :--- | :--- | :--- |\n| **Standardization** | None. Every chef cooks differently. | **Strict.** Every shop operates identically. |\n| **Reusability** | Low. Hard to move the \"Chef\" to a new spot. | **High.** Move the \"Fry Station\" anywhere. |\n| **Scalability** | Chaos. Hard to serve 1,000 customers. | **Massive.** Automated for high volume. |\n| **Quality** | Visual Inspection (Staring at the grill). | **Automated.** Sensors and checklists. |\n\n## The UVMBurger Way (UVM)\nUVM (Universal Verification Methodology) is our **Franchise Manual**. It imposes strict rules so that:\n1.  **A Driver is always a Driver:** Whether you are verifying a CPU or a GPU, the \"Chef\" role is the same.\n2.  **Plug-and-Play:** You can take a verification component (Agent) from one project and drop it into another with zero friction.\n3.  **Automation:** We don't just cook one burger; we generate thousands of random orders to stress-test the kitchen.\n\n## What You Will Master\nBy the end of this manual, you will be a **Head Chef of Verification**.\n- **OOP Basics:** The ingredients of modern verification.\n- **UVM Phases:** The strict schedule of the restaurant (Prep -> Service -> Cleanup).\n- **TLM (Transaction Level Modeling):** How the Waiter talks to the Chef.\n- **Coverage:** How to know when you've served enough burgers.",
     "codeSnippet": "// Example of standardized reporting\n`uvm_info(\"FRANCHISE\", \"Welcome to UVMBurger! The grill is hot.\", UVM_LOW)\n",
-    "codeLanguage": "systemverilog"
+    "codeLanguage": "systemverilog",
+    "quiz": [
+      {
+        "question": "What does UVM stand for?",
+        "options": [
+          "Universal Verification Methodology",
+          "Unified Verification Model",
+          "Universal Validation Method",
+          "Unified Validation Methodology"
+        ],
+        "correct": 0
+      },
+      {
+        "question": "What is the main advantage of UVM over traditional Verilog testbenches?",
+        "options": [
+          "It's faster to write",
+          "Standardization and reusability",
+          "It requires less memory",
+          "It's easier to debug"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "In the Burger Shop analogy, what does the 'Franchise Manual' represent?",
+        "options": [
+          "The DUT specification",
+          "The testbench code",
+          "The UVM standard",
+          "The simulation tool"
+        ],
+        "correct": 2
+      }
+    ]
   },
   {
     "id": "oop-basics",
@@ -33,114 +66,412 @@
     },
     "contentMarkdown": "## Class vs. Object (The Blueprint vs. The Building)\nTo run a franchise, you need to understand Object-Oriented Programming (OOP).\n- **Class (The Recipe Card):** This is just a piece of paper. It lists ingredients (variables) and cooking steps (functions). You cannot eat the paper.\n- **Object (The Burger):** This is the physical, edible thing created from the recipe. `Burger my_lunch = new();` creates a real burger object in memory.\n\n## Inheritance (The Secret Menu)\nWe don't rewrite the entire menu just to add a slice of cheese. We take the existing `Burger` recipe and **extend** it.\n- We create a new class `CheeseBurger` that inherits everything from `Burger`.\n- We don't need to re-define \"bun\" or \"meat\". We just add `bit has_cheese = 1;`.\n\n## Polymorphism (The Manager's Magic)\nThe Manager (Testbench) doesn't want to know if it's a Hamburger or a Cheeseburger. They just want to shout \"COOK IT!\".\n- **Virtual Functions:** By marking `cook()` as `virtual`, we allow child classes to override it.\n- If the Manager holds a generic `Burger` handle that points to a `CheeseBurger`, calling `cook()` will run the **Cheeseburger's** instructions (melting cheese).",
     "codeSnippet": "// The Base Recipe\nvirtual class Burger;\n  rand bit [3:0] patties;\n  virtual function void cook();\n    $display(\"Grilling %0d patties...\", patties);\n  endfunction\nendclass\n\n// The Extended Recipe (Inheritance)\nclass CheeseBurger extends Burger;\n  bit has_cheese = 1;\n  function void cook();\n    super.cook(); // Do the basic grilling first\n    $display(\"Melting the cheese... Delicious!\");\n  endfunction\nendclass\n",
-    "codeLanguage": "systemverilog"
+    "codeLanguage": "systemverilog",
+    "quiz": null
   },
   {
-    "id": "dut",
-    "title": "The Kitchen Equipment",
-    "icon": "Cpu",
+    "id": "physical_location",
+    "title": "The Physical Location",
+    "icon": "Building",
     "analogy": {
-      "role": "The Grill",
-      "description": "DUT = The Grill (Static Hardware). Interface = Service Window."
+      "role": "The Grill & Service Window",
+      "description": "DUT = The Grill (Static Hardware). Interface = Service Window. Modports = Window Rules."
     },
-    "contentMarkdown": "## The DUT (The Grill)\nThis is the hardware module. It is static and bolted to the floor.\n```systemverilog\nmodule burger_kitchen(\n  input        clk,\n  input        rst_n,\n  input  [1:0] order_type, // 0=Plain, 1=Cheese, 2=Veggie\n  output reg   ready_light\n);\n  // The grill logic (RTL)\n  always @(posedge clk) begin\n    if (!rst_n) ready_light <= 0;\n    else        ready_light <= 1; // Fast food!\n  end\nendmodule\n```\n\n## The Interface (The Service Window)\nThis allows our dynamic UVM classes to talk to the static hardware.\nIt bundles the wires into a single cable that we can pass around.",
-    "codeSnippet": "// The Interface (The Service Window)\ninterface burger_if(input bit clk);\n  logic       rst_n;\n  logic [1:0] order_type;\n  logic       ready_light;\nendinterface\n",
-    "codeLanguage": "systemverilog"
+    "contentMarkdown": "## The DUT (The Grill)\n\nThe **Design Under Test (DUT)** is the hardware module we're verifying. Think of it as **the grill** in our burger shop - it's **static**, bolted to the floor, and does the actual cooking.\n\n```systemverilog\nmodule burger_kitchen(\n  input        clk,\n  input        rst_n,\n  input  [1:0] order_type, // 0=Plain, 1=Cheese, 2=Veggie\n  output reg   ready_light\n);\n  // The grill logic (RTL)\n  always @(posedge clk) begin\n    if (!rst_n) ready_light <= 0;\n    else        ready_light <= 1; // Fast food!\n  end\nendmodule\n```\n\nThe DUT is written in **Verilog/SystemVerilog** and synthesizes to real hardware. Our job is to **stress-test** it with thousands of random orders to find bugs.\n\n## The Interface (The Service Window)\n\nThe **Interface** is the **service window** - the boundary between the dynamic testbench (software) and the static DUT (hardware).\n\nIt bundles all the signals into a single, reusable object we can pass around.\n\n```systemverilog\ninterface burger_if(input bit clk);\n  logic       rst_n;       // Reset signal\n  logic [1:0] order_type;  // Order request\n  logic       ready_light; // Kitchen status\nendinterface\n```\n\n**Why use an interface?**\n- **Bundling**: Instead of passing 10 separate wires, we pass one interface handle.\n- **Reusability**: The same interface can be used across multiple projects.\n- **Virtual Handles**: UVM classes can grab a `virtual burger_if` handle to access these signals.\n\n## The Window Rules (Modports)\n\nImagine our service window without rules - customers could climb through and start cooking! Chaos.\n\n**Modports** are like **employee badges** that restrict what each person can do at the window.\n\n### The Problem: Signal Contention\n\nWithout modports:\n- The **Driver (Chef)** might accidentally **read** when they should only **write**.\n- The **Monitor (Critic)** might try to **drive** signals when they should only **observe**.\n\n**Result:** Signal contention, compiler errors, or incorrect behavior.\n\n### The Solution: Access Control\n\n```systemverilog\ninterface burger_if(input bit clk);\n  logic        rst_n;\n  logic [1:0]  order_type;\n  logic        ready_light;\n\n  // 1. The Chef's Badge (Driver)\n  modport driver_mp (\n    input  clk,\n    input  rst_n,\n    output order_type,  // Chef can PLACE orders\n    input  ready_light  // Chef can SEE status\n  );\n\n  // 2. The Critic's Badge (Monitor)\n  modport monitor_mp (\n    input clk,\n    input rst_n,\n    input order_type,   // Critic can only WATCH\n    input ready_light\n  );\n\n  // 3. The Kitchen's Badge (DUT)\n  modport dut_mp (\n    input  clk,\n    input  rst_n,\n    input  order_type,  // Kitchen RECEIVES orders\n    output ready_light  // Kitchen SENDS status\n  );\n\nendinterface\n```\n\n### Enforcing the Rules\n\n**In the DUT:**\n```systemverilog\nmodule burger_kitchen(\n  burger_if.dut_mp vif  // Kitchen uses dut_mp\n);\n  // If RTL tries to drive 'order_type', compiler error!\nendmodule\n```\n\n**In the Driver:**\n```systemverilog\nclass burger_driver extends uvm_driver #(burger_item);\n  virtual burger_if.driver_mp vif;  // Chef uses driver_mp\n\n  task run_phase(uvm_phase phase);\n    vif.order_type <= 1;  // \u2705 Valid\n    // vif.rst_n <= 0;    // \u274c Compile error!\n  endtask\nendclass\n```\n\n## Key Takeaways\n\n- **DUT** = The static hardware we're verifying (The Grill)\n- **Interface** = The signal bundle connecting testbench to DUT (The Service Window)\n- **Modports** = Access control restricting what each component can do (Employee Badges)\n- Use **`driver_mp`** for components that drive signals (Chef)\n- Use **`monitor_mp`** for components that only observe (Critic)\n- Use **`dut_mp`** for the design under test (Kitchen)",
+    "codeSnippet": "interface burger_if(input bit clk);\n  logic [1:0] order_type;\n  \n  modport driver_mp (output order_type);\n  modport monitor_mp (input order_type);\n  modport dut_mp (input order_type);\nendinterface\n",
+    "codeLanguage": "systemverilog",
+    "quiz": [
+      {
+        "question": "What is the DUT in verification?",
+        "options": [
+          "The testbench",
+          "The Design Under Test (hardware being verified)",
+          "The monitor",
+          "The sequence"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What problem do modports solve?",
+        "options": [
+          "They make interfaces faster",
+          "They prevent signal contention by restricting access",
+          "They reduce memory usage",
+          "They generate random data"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What can a monitor_mp modport typically do?",
+        "options": [
+          "Drive all signals",
+          "Only read (input) signals",
+          "Modify the DUT",
+          "Delete signals"
+        ],
+        "correct": 1
+      }
+    ]
   },
   {
-    "id": "seq-item",
-    "title": "The Order Ticket",
-    "icon": "ScrollText",
+    "id": "meet_the_team",
+    "title": "Meet the Team",
+    "icon": "Users",
     "analogy": {
-      "role": "The Order",
-      "description": "Sequence Item = Customer Order. Constraints = Menu Rules."
+      "role": "The Core Staff",
+      "description": "Order Ticket (seq_item), Waiter (sequencer), Line Cook (driver), Food Critic (monitor)."
     },
-    "contentMarkdown": "## The Transaction\nData travels in packets called **Transactions** (`uvm_sequence_item`).\nAnalogy: The Customer Order.\n\n## The Menu Rules (Constraints)\nWe don't just want random noise; we want valid orders.\n- **`inside`**: Limits values to valid options (Beef, Chicken, Veggie).\n- **`dist`**: Biases the randomization (80% chance of ordering a Combo).",
-    "codeSnippet": "class burger_item extends uvm_sequence_item;\n  // 1. The Food (Data)\n  rand bit [1:0] patty_type; // 0=Beef, 1=Chicken, 2=Veggie\n  rand bit       is_combo;   // 1=Fries included\n\n  // 2. The Rules (Constraints)\n  constraint c_diet { patty_type inside {0, 1, 2}; }\n  constraint c_upsell { is_combo dist { 1:=80, 0:=20 }; } // 80% chance of combo\n\n  // 3. The Magic Macros (Boilerplate)\n  `uvm_object_utils_begin(burger_item)\n    `uvm_field_int(patty_type, UVM_ALL_ON)\n    `uvm_field_int(is_combo, UVM_ALL_ON)\n  `uvm_object_utils_end\n\n  function new(string name = \"burger_item\");\n    super.new(name);\n  endfunction\nendclass\n",
-    "codeLanguage": "systemverilog"
+    "contentMarkdown": "## 1. The Order Ticket (`uvm_sequence_item`)\n\nThe **sequence_item** is the **transaction** - the data packet traveling through our system. Think of it as **the customer's order ticket**.\n\nIt's not a person; it's just **data**.\n\n```systemverilog\nclass burger_item extends uvm_sequence_item;\n  // 1. The Food (Data Fields)\n  rand bit [1:0] patty_type; // 0=Beef, 1=Chicken, 2=Veggie\n  rand bit       is_combo;   // 1=Fries included\n\n  // 2. The Menu Rules (Constraints)\n  constraint c_diet { patty_type inside {0, 1, 2}; }\n  constraint c_upsell { is_combo dist { 1:=80, 0:=20 }; } // 80% combos\n\n  // 3. UVM Registration Macros\n  `uvm_object_utils_begin(burger_item)\n    `uvm_field_int(patty_type, UVM_ALL_ON)\n    `uvm_field_int(is_combo, UVM_ALL_ON)\n  `uvm_object_utils_end\n\n  function new(string name = \"burger_item\");\n    super.new(name);\n  endfunction\nendclass\n```\n\n**Key Points:**\n- **`rand`** makes fields randomizable\n- **Constraints** limit randomization to valid/meaningful values\n- **`uvm_object`** base class (not component - transactions are temporary objects)\n\n### The Menu Rules (Constraints)\n\nWe don't want random garbage - we want valid orders:\n- **`inside {0,1,2}`**: Only allow beef, chicken, or veggie\n- **`dist`**: Bias the randomization (80% chance of combo upsell)\n\n---\n\n## 2. The Waiter (`uvm_sequencer`)\n\nThe **sequencer** is the **traffic cop** - the waiter managing the flow of orders to the kitchen.\n\n```systemverilog\n// Simple typedef - we specialize the generic sequencer for burger_items\ntypedef uvm_sequencer #(burger_item) burger_sequencer;\n```\n\n**Job Description:**\n- Holds tickets in a queue\n- Decides who gets served first (Arbitration)\n- Hands tickets to the Chef one at a time\n\n**Why do we need it?**\n\nIf multiple customers (Sequences) are shouting orders simultaneously, the Waiter ensures orderly service:\n- **FIFO**: First come, first served\n- **Priority**: VIP customers go first\n- **Random**: Sometimes we shake things up for fairness\n\n---\n\n## 3. The Line Cook (`uvm_driver`)\n\nThe **driver** is the **chef** - the hard worker who converts abstract orders (objects) into concrete actions (pin wiggles).\n\n```systemverilog\nclass burger_driver extends uvm_driver #(burger_item);\n  `uvm_component_utils(burger_driver)\n  virtual burger_if vif; // Access to the Service Window\n\n  function void build_phase(uvm_phase phase);\n    super.build_phase(phase);\n    if (!uvm_config_db#(virtual burger_if)::get(this, \"\", \"vif\", vif))\n      `uvm_fatal(\"DRIVER\", \"No interface found!\")\n  endfunction\n\n  task run_phase(uvm_phase phase);\n    forever begin\n      // 1. Get the next ticket from the Waiter\n      seq_item_port.get_next_item(req);\n      \n      // 2. Cook it! (Drive signals to DUT)\n      @(posedge vif.clk);\n      vif.order_type <= req.patty_type;\n      `uvm_info(\"CHEF\", $sformatf(\"Cooking: %0d\", req.patty_type), UVM_MEDIUM)\n      \n      // 3. Tell Waiter we're done\n      seq_item_port.item_done();\n    end\n  endtask\nendclass\n```\n\n**The Cooking Loop:**\n1. **`get_next_item(req)`**: Ask the Waiter for the next order\n2. **Drive Signals**: Wiggle pins on the interface to stimulate the DUT\n3. **`item_done()`**: Tell the Waiter the order is complete\n\n**Virtual Interface:**\nThe driver uses `virtual burger_if vif` to reach out of the class world and touch the actual hardware signals.\n\n---\n\n## 4. The Food Critic (`uvm_monitor`)\n\nThe **monitor** is the **food critic** - a passive observer who watches everything but touches nothing.\n\n```systemverilog\nclass burger_monitor extends uvm_monitor;\n  `uvm_component_utils(burger_monitor)\n  virtual burger_if vif;\n  uvm_analysis_port #(burger_item) item_collected_port; // The Megaphone\n\n  function new(string name, uvm_component parent);\n    super.new(name, parent);\n    item_collected_port = new(\"item_collected_port\", this);\n  endfunction\n\n  function void build_phase(uvm_phase phase);\n    super.build_phase(phase);\n    if (!uvm_config_db#(virtual burger_if)::get(this, \"\", \"vif\", vif))\n      `uvm_fatal(\"MONITOR\", \"No interface found!\")\n  endfunction\n\n  task run_phase(uvm_phase phase);\n    forever begin\n      @(posedge vif.clk);\n      // 1. Spy on the service window\n      if (vif.ready_light == 1) begin\n        burger_item item = burger_item::type_id::create(\"item\");\n        item.patty_type = vif.order_type; // Reconstruct the order\n        \n        // 2. Broadcast to the world\n        `uvm_info(\"CRITIC\", $sformatf(\"Burger served: %0d\", item.patty_type), UVM_MEDIUM)\n        item_collected_port.write(item);\n      end\n    end\n  endtask\nendclass\n```\n\n**Critical Rules:**\n- **NEVER drive signals** - read-only access\n- **Sample on clock edges** to capture transactions\n- **Broadcast using analysis port** - anyone can listen (scoreboard, coverage, etc.)\n\n### The Megaphone (Analysis Port)\n\nThe **`uvm_analysis_port`** is a one-to-many broadcast channel:\n- The Critic shouts once\n- Multiple listeners hear it (Scoreboard, Coverage Collector, Logger)\n- This is **TLM (Transaction Level Modeling)** - we'll cover it in Chapter 6\n\n---\n\n## How They Work Together\n\n1. **Sequence** generates random `burger_item` objects\n2. **Sequencer** queues them and hands to Driver\n3. **Driver** converts objects to pin wiggles on the interface\n4. **DUT** processes the stimulus\n5. **Monitor** observes the DUT's response\n6. **Monitor** broadcasts transactions via analysis port\n7. **Scoreboard** (next chapter) compares expected vs actual\n\nThis is the heart of UVM - a well-organized assembly line from stimulus generation to result checking!",
+    "codeSnippet": "class burger_item extends uvm_sequence_item;\n  rand bit [1:0] patty_type;\n  constraint c_menu { patty_type inside {0,1,2}; }\nendclass\n\ntypedef uvm_sequencer #(burger_item) burger_sequencer;\n",
+    "codeLanguage": "systemverilog",
+    "quiz": [
+      {
+        "question": "What is a uvm_sequence_item?",
+        "options": [
+          "A verification component",
+          "A transaction representing data to be driven or monitored",
+          "A testbench environment",
+          "A clock generator"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does the uvm_sequencer do?",
+        "options": [
+          "Drives signals to the DUT",
+          "Monitors output signals",
+          "Manages the flow of transactions (arbitration)",
+          "Compares results"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is the driver's primary job?",
+        "options": [
+          "Generate random transactions",
+          "Convert transactions into pin-level stimulus",
+          "Check for correctness",
+          "Report results"
+        ],
+        "correct": 1
+      }
+    ]
   },
   {
-    "id": "sequencer",
-    "title": "The Waiter",
-    "icon": "User",
+    "id": "work_station",
+    "title": "The Work Station",
+    "icon": "Briefcase",
     "analogy": {
-      "role": "The Waiter",
-      "description": "Sequencer = Traffic Cop. Holds tickets and hands them to the Chef."
+      "role": "The Organized Station",
+      "description": "Agent = Sequencer + Driver + Monitor grouped together."
     },
-    "contentMarkdown": "## The Traffic Cop\nThe Sequencer holds the tickets and hands them to the Chef one by one.\nIt manages the flow of orders to the kitchen (Arbitration).\n\n## Why do we need it?\nIf multiple customers (Sequences) are shouting orders at once, the Waiter decides who gets served first.\n- **FIFO:** First come, first served.\n- **Priority:** VIP customers go first.",
-    "codeSnippet": "// Define the Waiter class specializing in burger_items\ntypedef uvm_sequencer #(burger_item) burger_sequencer;\n",
-    "codeLanguage": "systemverilog"
+    "contentMarkdown": "## The Work Station\n\nWe don't want staff wandering around aimlessly. We **group them into an organized station**.\n\nAn **Agent** (`uvm_agent`) wraps the **Sequencer**, **Driver**, and **Monitor** into a single, reusable unit.\n\nThink of it as **the fry station** or **the burger station** - all the tools and people needed for one specific job.\n\n## Active vs. Passive Mode\n\nThe agent has two modes:\n\n### Active Mode (Cooking)\nWe're **actively driving stimulus** into the DUT.\n- Instantiate: Sequencer + Driver + Monitor\n- The Chef cooks orders\n- Used in block-level verification\n\n### Passive Mode (Watching)\nWe're just **observing** what's happening.\n- Instantiate: Monitor only\n- No driving - we're at the chip level watching transactions\n- Used in integration testing\n\n```systemverilog\nclass burger_agent extends uvm_agent;\n  `uvm_component_utils(burger_agent)\n  \n  burger_sequencer sequencer;\n  burger_driver    driver;\n  burger_monitor   monitor;\n\n  function new(string name, uvm_component parent);\n    super.new(name, parent);\n  endfunction\n\n  function void build_phase(uvm_phase phase);\n    super.build_phase(phase);\n    \n    // Monitor is ALWAYS created (we always observe)\n    monitor = burger_monitor::type_id::create(\"monitor\", this);\n    \n    // Driver and Sequencer only in ACTIVE mode\n    if (get_is_active() == UVM_ACTIVE) begin\n      sequencer = burger_sequencer::type_id::create(\"sequencer\", this);\n      driver    = burger_driver::type_id::create(\"driver\", this);\n    end\n  endfunction\n\n  function void connect_phase(uvm_phase phase);\n    if (get_is_active() == UVM_ACTIVE) begin\n      // Plug the Driver into the Sequencer\n      driver.seq_item_port.connect(sequencer.seq_item_export);\n    end\n  endfunction\nendclass\n```\n\n## Why Use Agents?\n\n**Reusability**: Once you build a \"burger_agent\", you can drop it into any project that needs burger verification.\n\n**Organization**: All related components stay together - no loose parts.\n\n**Flexibility**: Switch between active and passive without changing code.\n\n## Configuration\n\nYou set the agent's mode in the environment or test:\n\n```systemverilog\nclass burger_env extends uvm_env;\n  burger_agent agent;\n  \n  function void build_phase(uvm_phase phase);\n    super.build_phase(phase);\n    agent = burger_agent::type_id::create(\"agent\", this);\n    \n    // Set to ACTIVE for block-level, PASSIVE for chip-level\n    agent.is_active = UVM_ACTIVE;\n  endfunction\nendclass\n```\n\n## Key Takeaways\n\n- **Agent** = Sequencer + Driver + Monitor (organized station)\n- **Active Mode** = Drive stimulus (block-level verification)\n- **Passive Mode** = Only monitor (chip-level/integration)\n- Agents make verification IP **plug-and-play** reusable",
+    "codeSnippet": "class burger_agent extends uvm_agent;\n  burger_sequencer sequencer;\n  burger_driver    driver;\n  burger_monitor   monitor;\n  \n  function void build_phase(uvm_phase phase);\n    monitor = burger_monitor::type_id::create(\"monitor\", this);\n    if (get_is_active() == UVM_ACTIVE) begin\n      sequencer = burger_sequencer::type_id::create(\"sequencer\", this);\n      driver    = burger_driver::type_id::create(\"driver\", this);\n    end\n  endfunction\nendclass\n",
+    "codeLanguage": "systemverilog",
+    "quiz": null
   },
   {
-    "id": "driver",
-    "title": "The Line Cook",
-    "icon": "ChefHat",
+    "id": "restaurant_communications",
+    "title": "Restaurant Communications",
+    "icon": "Radio",
     "analogy": {
-      "role": "The Chef",
-      "description": "Driver = Chef. Converts Orders (Objects) into Pin Wiggles."
+      "role": "The Intercom System",
+      "description": "TLM Ports, Exports, and FIFOs - How components talk without shouting."
     },
-    "contentMarkdown": "## The Cooking Loop\nThe Chef (Driver) has a simple job:\n1.  **`get_next_item(req)`**: Ask the Waiter for an order.\n2.  **Drive Signals**: Wiggle the pins on the DUT (Grill).\n3.  **`item_done()`**: Tell the Waiter the order is ready.\n\n## Virtual Interface\nThe Driver uses the `virtual interface` handle (`vif`) to reach out of the class and touch the actual hardware signals.",
-    "codeSnippet": "class burger_driver extends uvm_driver #(burger_item);\n  `uvm_component_utils(burger_driver)\n  virtual burger_if vif; // Access to the Service Window\n\n  task run_phase(uvm_phase phase);\n    forever begin\n      // 1. Get the next ticket from the Waiter\n      seq_item_port.get_next_item(req);\n      \n      // 2. Cook it! (Drive signals to DUT)\n      @(posedge vif.clk);\n      vif.order_type <= req.patty_type;\n      `uvm_info(\"DRIVER\", $sformatf(\"Cooking patty type: %0d\", req.patty_type), UVM_MEDIUM)\n      \n      // 3. Tell Waiter we are done\n      seq_item_port.item_done();\n    end\n  endtask\nendclass\n",
-    "codeLanguage": "systemverilog"
+    "contentMarkdown": "## How Components Talk\n\nIn a busy restaurant, people can't just shout across the room. We need an **organized communication system**.\n\nThis is **TLM (Transaction Level Modeling)** - the method UVM components use to pass data without direct function calls.\n\n## The Problem: Tight Coupling\n\n**Bad approach:**\n```systemverilog\n// DON'T DO THIS!\nmonitor.send_to_scoreboard(item);  // Direct call - tight coupling\n```\n\n**Why is this bad?**\n- Hard to reuse components\n- Can't easily add new listeners\n- Breaks encapsulation\n\n## The Solution: TLM Ports\n\nThink of **ports** and **exports** as an **intercom system**:\n- **Port (Megaphone)**: The person broadcasting\n- **Export (Speaker)**: The person listening\n- **FIFO (Bucket)**: A buffer in between\n\n### Port vs. Export\n\n**Port (initiating action):**\n```systemverilog\nclass burger_monitor extends uvm_monitor;\n  // The Critic's megaphone\n  uvm_analysis_port #(burger_item) item_collected_port;\n  \n  function new(string name, uvm_component parent);\n    super.new(name, parent);\n    item_collected_port = new(\"item_collected_port\", this);\n  endfunction\n  \n  task run_phase(uvm_phase phase);\n    // Broadcast to whoever is listening\n    item_collected_port.write(item);\n  endtask\nendclass\n```\n\n**Export (receiving action):**\n```systemverilog\nclass burger_scoreboard extends uvm_scoreboard;\n  // The Manager's speaker (receives broadcasts)\n  uvm_analysis_imp #(burger_item, burger_scoreboard) item_export;\n  \n  function new(string name, uvm_component parent);\n    super.new(name, parent);\n    item_export = new(\"item_export\", this);\n  endfunction\n  \n  // This function is automatically called when data arrives\n  function void write(burger_item item);\n    // Process the item\n    `uvm_info(\"SCOREBOARD\", \"Received burger!\", UVM_MEDIUM)\n  endfunction\nendclass\n```\n\n### Connecting Them\n\nIn the environment's `connect_phase`:\n```systemverilog\nfunction void connect_phase(uvm_phase phase);\n  // Plug the Monitor's megaphone into the Scoreboard's speaker\n  agent.monitor.item_collected_port.connect(scoreboard.item_export);\nendfunction\n```\n\n## The Bucket Strategy (Analysis FIFO)\n\nSometimes the **Critic talks fast** but the **Manager reads slow**.\n\nWe use a **FIFO (First-In-First-Out) buffer** as a bucket:\n\n```systemverilog\nclass burger_env extends uvm_env;\n  burger_monitor monitor;\n  burger_scoreboard scoreboard;\n  uvm_tlm_analysis_fifo #(burger_item) fifo; // The bucket\n  \n  function void build_phase(uvm_phase phase);\n    fifo = new(\"fifo\", this);\n  endfunction\n  \n  function void connect_phase(uvm_phase phase);\n    // Critic throws items into the bucket\n    monitor.item_collected_port.connect(fifo.analysis_export);\n    \n    // Manager pulls from the bucket (blocking get)\n    // (Scoreboard would use fifo.blocking_get_port)\n  endfunction\nendclass\n```\n\n**Benefits:**\n- **Decoupling**: Critic and Manager work at their own pace\n- **Buffering**: No data loss if Manager is busy\n- **Flexibility**: Easy to add more listeners\n\n## Types of TLM Communications\n\n### 1. Blocking (Wait for handshake)\n```systemverilog\nseq_item_port.get_next_item(req); // Waits until item is ready\nseq_item_port.item_done();        // Signals completion\n```\n\n### 2. Non-Blocking (Try, but don't wait)\n```systemverilog\nif (port.try_get(item)) begin\n  // Got an item\nend else begin\n  // No item available, continue\nend\n```\n\n### 3. Analysis (Broadcast, one-to-many)\n```systemverilog\nitem_collected_port.write(item); // All connected listeners receive it\n```\n\n## Key Takeaways\n\n- **TLM** = How components communicate without tight coupling\n- **Port** = Initiator (megaphone, \"I'm sending\")\n- **Export** = Receiver (speaker, \"I'm receiving\")\n- **FIFO** = Buffer between fast and slow components\n- **Analysis Port** = One-to-many broadcast (Monitor \u2192 multiple listeners)\n- Connects in `connect_phase`, used in `run_phase`\n\nThis is how the restaurant stays organized even during rush hour! \ud83c\udf54\ud83d\udcde",
+    "codeSnippet": "// The Critic broadcasts using an analysis port\nuvm_analysis_port #(burger_item) item_port;\nitem_port.write(item); // Broadcast to all listeners\n\n// The Manager listens using an analysis export\nuvm_analysis_imp #(burger_item, scoreboard) item_export;\n",
+    "codeLanguage": "systemverilog",
+    "quiz": null
   },
   {
-    "id": "monitor",
-    "title": "The Food Critic",
-    "icon": "Eye",
-    "analogy": {
-      "role": "The Critic",
-      "description": "Monitor = Food Critic. Passive observer who broadcasts reviews."
-    },
-    "contentMarkdown": "## Passive Observation\nThe Critic (Monitor) watches the service window.\nIt must **never** drive signals. It only observes.\n\n## The Megaphone (Analysis Port)\nWhen the Critic sees a burger, they don't just tell one person. They shout it to the world.\n- **`uvm_analysis_port`**: A one-to-many broadcast channel.\n- Anyone who cares (Scoreboard, Coverage Collector) can listen.",
-    "codeSnippet": "class burger_monitor extends uvm_monitor;\n  `uvm_component_utils(burger_monitor)\n  virtual burger_if vif;\n  uvm_analysis_port #(burger_item) item_collected_port; // The Megaphone\n\n  task run_phase(uvm_phase phase);\n    forever begin\n      @(posedge vif.clk);\n      // 1. Spy on the window\n      if (vif.ready_light == 1) begin\n        burger_item item = burger_item::type_id::create(\"item\");\n        item.patty_type = vif.order_type; // Reconstruct the order\n        \n        // 2. Broadcast to the world\n        item_collected_port.write(item);\n      end\n    end\n  endtask\nendclass\n",
-    "codeLanguage": "systemverilog"
-  },
-  {
-    "id": "scoreboard",
-    "title": "The Shift Manager",
+    "id": "quality_control",
+    "title": "Management & Quality Control",
     "icon": "ClipboardCheck",
     "analogy": {
-      "role": "Quality Control",
-      "description": "Scoreboard = Manager. Compares Order (Expected) vs Burger (Actual)."
+      "role": "The Shift Manager",
+      "description": "Scoreboard = Manager comparing Expected vs Actual."
     },
-    "contentMarkdown": "## Quality Control\nThe Manager ensures the Order matches the Result.\n- They receive the \"Actual Burger\" from the Monitor.\n- They compare it against the \"Expected Order\".\n- If they match, great! If not, **UVM_ERROR**.\n\n## Analysis Imp\nThe Scoreboard uses an `uvm_analysis_imp` to receive the broadcast from the Monitor.\nIt implements the `write()` function to process the incoming transaction.",
-    "codeSnippet": "class burger_scoreboard extends uvm_scoreboard;\n  `uvm_component_utils(burger_scoreboard)\n  \n  // Mailbox to receive reviews\n  uvm_analysis_imp #(burger_item, burger_scoreboard) analysis_export;\n\n  // This triggers whenever the Monitor shouts \"Found one!\"\n  function void write(burger_item item);\n    if (item.patty_type == 2) \n      `uvm_info(\"SCOREBOARD\", \"Veggie burger served correctly!\", UVM_LOW)\n    else\n      `uvm_info(\"SCOREBOARD\", \"Meat burger served.\", UVM_LOW)\n  endfunction\nendclass\n",
-    "codeLanguage": "systemverilog"
+    "contentMarkdown": "## The Shift Manager\n\nThe **Scoreboard** is the **shift manager** sitting in the back office with two sources of information:\n\n1. **Expected**: What the customer *ordered* (from the sequence/driver)\n2. **Actual**: What the kitchen *produced* (from the monitor)\n\n**The Logic:**\n```systemverilog\nif (Expected == Actual) \n  return PASS;\nelse\n  return FAIL;\n```\n\n## How It Works\n\n```systemverilog\nclass burger_scoreboard extends uvm_scoreboard;\n  `uvm_component_utils(burger_scoreboard)\n  \n  // The Manager's inbox (receives from Monitor)\n  uvm_analysis_imp #(burger_item, burger_scoreboard) item_export;\n  \n  // Storage for expected results\n  burger_item expected_queue[$];\n\n  function new(string name, uvm_component parent);\n    super.new(name, parent);\n    item_export = new(\"item_export\", this);\n  endfunction\n\n  // Called automatically when Monitor broadcasts\n  function void write(burger_item actual_item);\n    burger_item expected_item;\n    \n    if (expected_queue.size() == 0) begin\n      `uvm_error(\"SCOREBOARD\", \"Got result but no expected item!\")\n      return;\n    end\n    \n    // Pop the first expected item\n    expected_item = expected_queue.pop_front();\n    \n    // Compare\n    if (actual_item.patty_type == expected_item.patty_type) begin\n      `uvm_info(\"SCOREBOARD\", $sformatf(\"PASS: Expected=%0d, Got=%0d\", \n                expected_item.patty_type, actual_item.patty_type), UVM_LOW)\n    end else begin\n      `uvm_error(\"SCOREBOARD\", $sformatf(\"FAIL: Expected=%0d, Got=%0d\", \n                expected_item.patty_type, actual_item.patty_type))\n    end\n  endfunction\nendclass\n```\n\n## Getting the Expected Values\n\n**Option 1: Listen to the Driver**\n```systemverilog\n // In the environment, also connect driver's analysis port to scoreboard\nagent.driver.item_sent_port.connect(scoreboard.expected_export);\n```\n\n**Option 2: Predict from Input**\nThe scoreboard can implement a **reference model** - a software version of the DUT's behavior.\n\n## Analysis Imp\n\nThe **`uvm_analysis_imp`** is the receiving end of TLM communication:\n- Monitor has an **analysis_port** (broadcaster)\n- Scoreboard has an **analysis_imp** (receiver)  \n- Connected in `connect_phase`\n- Scoreboard's `write()` function is automatically called when data arrives\n\n## Beyond Simple Comparison\n\nAdvanced scoreboards can:\n- **Track Coverage**: Did we test all burger types?\n- **Performance Metrics**: How long did each order take?\n- **Error Injection**: Intentionally break things to test error handling\n- **Self-Checking**: Generate expected values using a golden model\n\n## Key Takeaways\n\n- **Scoreboard** = The quality control manager\n- Compares **Expected** vs **Actual** results\n- Uses **`uvm_analysis_imp`** to receive monitored transactions\n- Reports **`uvm_info`** for pass, **`uvm_error`** for fail\n- Can implement reference models for complex checking",
+    "codeSnippet": "class burger_scoreboard extends uvm_scoreboard;\n  uvm_analysis_imp #(burger_item, burger_scoreboard) item_export;\n  \n  function void write(burger_item item);\n    if (expected == item.patty_type)\n      `uvm_info(\"PASS\", \"Order correct!\", UVM_LOW)\n    else\n      `uvm_error(\"FAIL\", \"Wrong burger!\")\n  endfunction\nendclass\n",
+    "codeLanguage": "systemverilog",
+    "quiz": null
   },
   {
-    "id": "agent",
-    "title": "The Work Station",
-    "icon": "Network",
+    "id": "laws_of_kitchen",
+    "title": "The Laws of the Kitchen",
+    "icon": "Scale",
     "analogy": {
-      "role": "The Station",
-      "description": "Agent = Work Station. Bundles Chef, Waiter, and Critic."
+      "role": "Restaurant Rules & Schedule",
+      "description": "Components vs Objects, Phasing, and the Config DB."
     },
-    "contentMarkdown": "## The Station\nAn Agent bundles the components related to a specific interface.\n- **Active Agent:** Has a Driver and Sequencer. It drives traffic. (The Kitchen)\n- **Passive Agent:** Only has a Monitor. It just watches. (The Health Inspector)\n\n## Configuration\nWe use `get_is_active()` to decide whether to build the Driver and Sequencer.\nThis makes the Agent reusable in different environments.",
-    "codeSnippet": "class burger_agent extends uvm_agent;\n  `uvm_component_utils(burger_agent)\n\n  burger_sequencer sequencer;\n  burger_driver    driver;\n  burger_monitor   monitor;\n\n  function void build_phase(uvm_phase phase);\n    monitor = burger_monitor::type_id::create(\"monitor\", this);\n\n    // Only hire cooking staff if ACTIVE\n    if (get_is_active() == UVM_ACTIVE) begin\n      sequencer = burger_sequencer::type_id::create(\"sequencer\", this);\n      driver    = burger_driver::type_id::create(\"driver\", this);\n    end\n  endfunction\n\n  function void connect_phase(uvm_phase phase);\n    if (get_is_active() == UVM_ACTIVE) begin\n      // Connect Waiter to Chef\n      driver.seq_item_port.connect(sequencer.seq_item_export);\n    end\n  endfunction\nendclass\n",
-    "codeLanguage": "systemverilog"
+    "contentMarkdown": "## 1. Staff vs. Food (Component vs. Object)\n\nIn UVM, there are two types of things:\n\n### `uvm_component` (Staff - Permanent Employees)\n- **Has a desk**: Fixed position in the hierarchy\n- **Has a schedule**: Goes through UVM phases (build, connect, run)\n- **Exists the whole shift**: Created at time 0, lives until simulation ends\n- **Examples**: Driver, Monitor, Sequencer, Agent, Env, Test\n\n```systemverilog\nclass burger_driver extends uvm_driver #(burger_item);\n  `uvm_component_utils(burger_driver)\n  // Has build_phase, connect_phase, run_phase, etc.\nendclass\n```\n\n### `uvm_object` (Food - Temporary Items)\n- **No hierarchy**: Just floating data packets\n- **No phasing**: Created, used, destroyed\n- **Short-lived**: Created on-demand, garbage collected when done\n- **Examples**: Sequence Item, Sequences, Configurations\n\n```systemverilog\nclass burger_item extends uvm_sequence_item;\n  `uvm_object_utils(burger_item)\n  // Just data - no phases\nendclass\n```\n\n**Rule of Thumb:**\n- If it's **infrastructure** (people, tools) \u2192 Component\n- If it's **data** (orders, burgers) \u2192 Object\n\n---\n\n## 2. The Schedule (UVM Phasing)\n\nThe restaurant operates on a strict timeline. Everyone follows the same schedule.\n\n### Time 0 Phases (Setup)\n\n**1. Build Phase (Top-Down)**\n- **What**: Hire staff, construct components\n- **Order**: Parent creates children\n- **Example**: Environment creates Agents, Agents create Drivers\n\n```systemverilog\nfunction void build_phase(uvm_phase phase);\n  super.build_phase(phase);\n  agent = burger_agent::type_id::create(\"agent\", this);\n  scoreboard = burger_scoreboard::type_id::create(\"scoreboard\", this);\nendfunction\n```\n\n**2. Connect Phase (Bottom-Up)**\n- **What**: Wire things together (TLM ports)\n- **Order**: Children connect first, then parents\n- **Example**: Connect Monitor's port to Scoreboard's export\n\n``` systemverilog\nfunction void connect_phase(uvm_phase phase);\n  agent.monitor.item_collected_port.connect(scoreboard.item_export);\nendfunction\n```\n\n**3. End of Elaboration Phase**\n- Print hierarchy, check configuration\n- Last chance to verify setup before cooking starts\n\n### Run Phase (Time Advances)\n\n**This is the ONLY phase where simulation time moves.**\n\n```systemverilog\ntask run_phase(uvm_phase phase);\n  // Time ticks here!\n  forever begin\n    @(posedge clk);\n    // Do work\n  end\nendtask\n```\n\nAll the action happens here: driving stimulus, monitoring, checking.\n\n### Time 0 Cleanup Phases\n\n**Extract/Report/Final**\n- Count burgers served\n- Calculate coverage\n- Report pass/fail statistics\n\n---\n\n## 3. The Keys (Config DB)\n\n**Problem**: How does the dynamic Driver (UVM class) find the static Interface (module)?\n\n**Answer**: The **`uvm_config_db`** - the restaurant's bulletin board.\n\n### In the Top Module (Static World)\n\n```systemverilog\nmodule top;\n  burger_if vif(clk);  // Physical interface\n  \n  initial begin\n    // Post the keys on the bulletin board\n    uvm_config_db#(virtual burger_if)::set(\n      null,        // scope: start from top\n      \"*\",         // wildcard: anyone can see it\n      \"vif\",       // name: the lookup key\n      vif          // value: the actual interface\n    );\n    \n    run_test();\n  end\nendmodule\n```\n\n### In the Driver (Dynamic World)\n\n```systemverilog\nclass burger_driver extends uvm_driver #(burger_item);\n  virtual burger_if vif;\n  \n  function void build_phase(uvm_phase phase);\n    super.build_phase(phase);\n    \n    // Grab the keys from the bulletin board\n    if (!uvm_config_db#(virtual burger_if)::get(this, \"\", \"vif\", vif))\n      `uvm_fatal(\"DRIVER\", \"No interface found! I can't see the window!\")\n  endfunction\nendclass\n```\n\n### Config DB for Everything\n\nYou can share ANY data this way:\n\n```systemverilog\n// Set in test\nuvm_config_db#(int)::set(null, \"*\", \"num_burgers\", 100);\n\n// Get in sequence\nint num_burgers;\nuvm_config_db#(int)::get(this, \"\", \"num_burgers\", num_burgers);\n```\n\n**Uses:**\n- Virtual interfaces (most common)\n- Configuration parameters\n- Test knobs and switches\n- Feature enables/disables\n\n---\n\n## Key Takeaways\n\n**Components vs Objects:**\n- Component = Staff (hierarchy, phases, permanent)\n- Object = Food (temporary, no phases)\n\n**Phasing:**\n- **Build** (Top-Down) \u2192 Hire staff\n- **Connect** (Bottom-Up) \u2192 Wire ports\n- **Run** (Time moves) \u2192 Do the work\n- **Report** \u2192 Count the results\n\n**Config DB:**\n- The bulletin board for sharing data\n- Bridges static (top module) and dynamic (UVM classes)\n- Used in `build_phase` to configure components\n\nThese are the fundamental laws governing our UVM kitchen! \ud83c\udf54\u2696\ufe0f",
+    "codeSnippet": "// Component (Staff) - permanent, has hierarchy\nclass burger_driver extends uvm_driver #(burger_item);\n\n// Object (Food) - temporary, no hierarchy\nclass burger_item extends uvm_sequence_item;\n\n// Config DB - the bulletin board\nuvm_config_db#(virtual burger_if)::set(null, \"*\", \"vif\", vif);\n",
+    "codeLanguage": "systemverilog",
+    "quiz": null
   },
   {
-    "id": "env-test",
+    "id": "grand_opening",
     "title": "The Grand Opening",
-    "icon": "Play",
-    "analogy": {
-      "role": "The Restaurant",
-      "description": "Env = Restaurant. Test = Opening Day."
-    },
-    "contentMarkdown": "## The Environment (The Floor Plan)\nThe Environment (`uvm_env`) is the container for the whole testbench.\nIt connects the Agent (Station) to the Scoreboard (Manager).\n\n## The Test (Opening Day)\nThe Test (`uvm_test`) is the top-level component.\n- It builds the Environment.\n- It starts the Sequence (Traffic).\n- It manages **Objections** (Opening and Closing the shop).",
-    "codeSnippet": "// The Environment (The Floor Plan)\nclass burger_env extends uvm_env;\n  burger_agent      agent;\n  burger_scoreboard scoreboard;\n  function void connect_phase(uvm_phase phase);\n    // Connect Critic (Monitor) to Manager (Scoreboard)\n    agent.monitor.item_collected_port.connect(scoreboard.analysis_export);\n  endfunction\nendclass\n\n// The Test (Opening Day)\nclass burger_test extends uvm_test;\n  burger_env env;\n  task run_phase(uvm_phase phase);\n    burger_sequence seq = burger_sequence::type_id::create(\"seq\");\n    phase.raise_objection(this); // Open the shop\n    seq.start(env.agent.sequencer); // Start taking orders\n    phase.drop_objection(this);  // Close the shop\n  endtask\nendclass\n",
-    "codeLanguage": "systemverilog"
-  },
-  {
-    "id": "launch",
-    "title": "The Franchise Launch",
     "icon": "Rocket",
     "analogy": {
-      "role": "Execution",
-      "description": "Running the Simulators (VCS, Xcelium, Questa)."
+      "role": "The Restaurant & Construction Site",
+      "description": "Env = Floor Plan, Test = Opening Day, Top = Where Hardware Meets Software."
     },
-    "contentMarkdown": "## Turning on the Open Sign\nYou've built the kitchen, hired the staff, and prepped the food. Now it's time to run the business.\n\n### 1. VCS (Synopsys)\nThe \"Fast Food Giant\" approach.\n- `-sverilog`: Enable SystemVerilog.\n- `-ntb_opts uvm`: Use built-in UVM.\n- `-R`: Run immediately.\n\n### 2. Xcelium / IES (Cadence)\nThe \"Gourmet Experience\" approach.\n- `-uvm`: Enable UVM.\n- `+UVM_TESTNAME`: Tell UVM which test to run.\n\n### 3. Questa (Siemens/Mentor)\nThe \"Classic Diner\" approach.\n- `vlog`: Compile.\n- `vsim`: Simulate.",
-    "codeSnippet": "# 1. VCS (Synopsys)\nvcs -sverilog -ntb_opts uvm +incdir+src top.sv -R +UVM_TESTNAME=burger_test\n\n# 2. Xcelium (Cadence)\nxrun -uvm +incdir+src top.sv +UVM_TESTNAME=burger_test\n\n# 3. Questa (Siemens)\nvlog -sv +incdir+src +incdir+$UVM_HOME/src top.sv\nvsim top -do \"run -all; quit\" +UVM_TESTNAME=burger_test\n",
-    "codeLanguage": "bash"
+    "contentMarkdown": "## 1. The Environment (The Floor Plan)\n\nThe **Environment** (`uvm_env`) is the **floor plan** of the restaurant - it contains and connects all the major components.\n\n```systemverilog\nclass burger_env extends uvm_env;\n  `uvm_component_utils(burger_env)\n  \n  burger_agent      agent;\n  burger_scoreboard scoreboard;\n\n  function new(string name, uvm_component parent);\n    super.new(name, parent);\n  endfunction\n\n  function void build_phase(uvm_phase phase);\n    super.build_phase(phase);\n    // Build the station and the manager's office\n    agent      = burger_agent::type_id::create(\"agent\", this);\n    scoreboard = burger_scoreboard::type_id::create(\"scoreboard\", this);\n  endfunction\n\n  function void connect_phase(uvm_phase phase);\n    // Wire the Critic's megaphone to the Manager's speaker\n    agent.monitor.item_collected_port.connect(scoreboard.item_export);\n  endfunction\nendclass\n```\n\n**The Environment's Job:**\n- Create all agents and scoreboards\n- Connect them via TLM ports\n- Provide a reusable, self-contained verification environment\n\n---\n\n## 2. The Test (Opening Day)\n\nThe **Test** (`uvm_test`) is the **business plan** for today. It's the top-level UVM component that:\n- Builds the environment\n- Configures components\n- Starts sequences\n- Controls simulation lifetime\n\n```systemverilog\nclass burger_test extends uvm_test;\n  `uvm_component_utils(burger_test)\n  \n  burger_env env;\n\n  function new(string name, uvm_component parent);\n    super.new(name, parent);\n  endfunction\n\n  function void build_phase(uvm_phase phase);\n    super.build_phase(phase);\n    // Open the restaurant\n    env = burger_env::type_id::create(\"env\", this);\n  endfunction\n\n  task run_phase(uvm_phase phase);\n    burger_sequence seq;\n    seq = burger_sequence::type_id::create(\"seq\");\n\n    // Open for business\n    phase.raise_objection(this, \"Starting burger test\");\n    `uvm_info(\"TEST\", \"Restaurant is OPEN! Taking orders...\", UVM_LOW)\n    \n    // Start serving customers\n    seq.start(env.agent.sequencer);\n    \n    #100; // Give kitchen time to clean up\n    \n    // Close for the night\n    `uvm_info(\"TEST\", \"Restaurant is CLOSED!\", UVM_LOW)\n    phase.drop_objection(this, \"Ending burger test\");\n  endtask\nendclass\n```\n\n**Objections Explained:**\n- **`raise_objection()`**: \"Don't end simulation yet, I'm working!\"\n- **`drop_objection()`**: \"I'm done, you can end now.\"\n- Simulation ends when ALL objections are dropped\n\n---\n\n## 3. The Construction Site (Top Module)\n\nThe **Top Module** is where the **static hardware world** meets the **dynamic UVM software world**. It's the construction site where everything comes together.\n\n```systemverilog\nmodule top;\n  // Import UVM\n  import uvm_pkg::*;\n  `include \"uvm_macros.svh\"\n  \n  // Import our restaurant code\n  import burger_pkg::*;\n\n  // 1. POWER: Generate Clock & Reset\n  bit clk;\n  bit rst_n;\n  \n  initial begin\n    clk = 0;\n    rst_n = 0;\n    #20 rst_n = 1; // Open shop after 20ns\n  end\n  \n  always #5 clk = ~clk; // 10ns period (100MHz)\n\n  // 2. EQUIPMENT: Instantiate Interface & DUT\n  burger_if vif(clk);\n  \n  burger_kitchen DUT (\n    .clk(vif.clk),\n    .rst_n(rst_n),\n    .order_type(vif.order_type),\n    .ready_light(vif.ready_light)\n  );\n\n  // 3. KEYS: Pass Interface to UVM via Config DB\n  initial begin\n    // Connect reset to interface\n    assign vif.rst_n = rst_n;\n    \n    // Post the interface handle on the bulletin board\n    uvm_config_db#(virtual burger_if)::set(null, \"*\", \"vif\", vif);\n    \n    // 4. RIBBON CUTTING: Start the UVM test\n    run_test();\n  end\nendmodule\n```\n\n**Four Critical Tasks:**\n1. **Generate Clock/Reset** - The power supply\n2. **Instantiate DUT & Interface** - The physical equipment\n3. **Set Config DB** - Give UVM components access to the interface\n4. **`run_test()`** - Start the UVM machinery\n\n### Config DB in Detail\n\n```systemverilog\nuvm_config_db#(virtual burger_if)::set(null, \"*\", \"vif\", vif);\n```\n\n- **Type**: `virtual burger_if` - The data type we're storing\n- **Scope**: `null` - Start from UVM root\n- **Wildcard**: `\"*\"` - Any component can access it\n- **Name**: `\"vif\"` - The lookup key\n- **Value**: `vif` - The actual interface instance\n\nAny UVM component can now retrieve it:\n```systemverilog\nif (!uvm_config_db#(virtual burger_if)::get(this, \"\", \"vif\", vif))\n  `uvm_fatal(\"NO_VIF\", \"Interface not found!\")\n```\n\n---\n\n## Putting It All Together\n\n**The Hierarchy:**\n```\ntop (module)\n\u2514\u2500\u2500 burger_test (uvm_test)\n    \u2514\u2500\u2500 burger_env (uvm_env)\n        \u251c\u2500\u2500 burger_agent (uvm_agent)\n        \u2502   \u251c\u2500\u2500 burger_sequencer\n        \u2502   \u251c\u2500\u2500 burger_driver\n        \u2502   \u2514\u2500\u2500 burger_monitor\n        \u2514\u2500\u2500 burger_scoreboard\n```\n\n**The Flow:**\n1. **Top module** creates clock, DUT, interface\n2. **Top module** sets config DB and calls `run_test()`\n3. **UVM builds hierarchy** (build_phase, top-down)\n4. **UVM connects ports** (connect_phase, bottom-up)\n5. **Test raises objection** and starts sequence\n6. **Sequence generates transactions** \u2192 Sequencer \u2192 Driver\n7. **Driver drives DUT**\n8. **Monitor observes DUT** \u2192 Scoreboard\n9. **Scoreboard checks** correctness\n10. **Test drops objection** when done\n11. **Simulation ends**\n\n## Key Takeaways\n\n- **Environment** = The restaurant floor plan (agents + scoreboards)\n- **Test** = Opening day business plan (configuration + sequences)\n- **Top Module** = Construction site (hardware + software bridge)\n- **Objections** = Keep simulation alive until work is done\n- **Config DB** = Share data between static and dynamic worlds\n- **`run_test()`** = Start the entire UVM machinery\n\nThe restaurant is now ready for business! \ud83c\udf89\ud83c\udf54",
+    "codeSnippet": "class burger_test extends uvm_test;\n  burger_env env;\n  task run_phase(uvm_phase phase);\n    phase.raise_objection(this);\n    burger_sequence seq = burger_sequence::type_id::create(\"seq\");\n    seq.start(env.agent.sequencer);\n    phase.drop_objection(this);\n  endtask\nendclass\n",
+    "codeLanguage": "systemverilog",
+    "quiz": [
+      {
+        "question": "What is the primary purpose of the top module?",
+        "options": [
+          "To generate random test cases",
+          "To connect static hardware with dynamic testbench",
+          "To display simulation results",
+          "To compile SystemVerilog code"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does uvm_config_db do in the top module?",
+        "options": [
+          "Generates clock signals",
+          "Compiles the design",
+          "Passes the interface handle to UVM components",
+          "Runs the simulation"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What does raise_objection() prevent?",
+        "options": [
+          "Compilation errors",
+          "Simulation from ending prematurely",
+          "Random failures",
+          "Clock generation"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "operating_instructions",
+    "title": "Operating Instructions",
+    "icon": "Terminal",
+    "analogy": {
+      "role": "Turning on the Open Sign",
+      "description": "How to run your UVM testbench on real simulators."
+    },
+    "contentMarkdown": "## Turning on the Open Sign\n\nYou've built the restaurant. Now it's time to flip the \"OPEN\" sign and start serving customers.\n\nThis means **running your UVM testbench** on a real simulator.\n\n## The Three Major Simulators\n\n### 1. Synopsys VCS\n\n**Compile and Run:**\n```bash\nvcs -sverilog -ntb_opts uvm top.sv -R +UVM_TESTNAME=burger_test\n```\n\n**Flags Explained:**\n- `-sverilog`: Enable SystemVerilog\n- `-ntb_opts uvm`: Include UVM library\n- `-R`: Run immediately after compilation\n- `+UVM_TESTNAME=burger_test`: Which test to run\n\n**With Waveforms (DVE):**\n```bash\nvcs -sverilog -ntb_opts uvm -debug_all top.sv\n./simv +UVM_TESTNAME=burger_test\ndve -vpd vcdplus.vpd &\n```\n\n---\n\n### 2. Cadence Xcelium\n\n**Single Command (Compile + Run):**\n```bash\nxrun -uvm top.sv +UVM_TESTNAME=burger_test\n```\n\n**Flags Explained:**\n- `-uvm`: Enable UVM\n- `+UVM_TESTNAME=burger_test`: Which test to run\n\n**With Waveforms (SimVision):**\n```bash\nxrun -uvm -gui -access +rwc top.sv +UVM_TESTNAME=burger_test\n```\n\n---\n\n### 3. Siemens Questa/ModelSim\n\n**Two-Step Process:**\n\n**Step 1: Compile**\n```bash\nvlog -sv +incdir+$UVM_HOME/src $UVM_HOME/src/uvm_pkg.sv\nvlog -sv top.sv\n```\n\n**Step 2: Simulate**\n```bash\nvsim -voptargs=\"+acc\" top +UVM_TESTNAME=burger_test -do \"run -all; quit\"\n```\n\n**With Waveforms (GUI):**\n```bash\nvsim -gui top +UVM_TESTNAME=burger_test\n# In GUI: run -all\n```\n\n---\n\n## Command-Line Arguments\n\n### Selecting Different Tests\n\n```bash\n+UVM_TESTNAME=burger_test          # Default test\n+UVM_TESTNAME=vegan_burger_test    # Run vegan test\n+UVM_TESTNAME=stress_test          # Run stress test\n```\n\n### UVM Verbosity Levels\n\n```bash\n+UVM_VERBOSITY=UVM_NONE    # Silent (errors only)\n+UVM_VERBOSITY=UVM_LOW     # Minimal info\n+UVM_VERBOSITY=UVM_MEDIUM  # Standard (default)\n+UVM_VERBOSITY=UVM_HIGH    # Detailed\n+UVM_VERBOSITY=UVM_DEBUG   # Everything (very noisy)\n```\n\nExample:\n```bash\nvcs -ntb_opts uvm top.sv -R +UVM_TESTNAME=burger_test +UVM_VERBOSITY=UVM_HIGH\n```\n\n### Config DB Overrides\n\nYou can override config values from command line:\n\n```bash\n+uvm_set_config_int=*,num_burgers,1000\n+uvm_set_config_string=*,patty_type,\"veggie\"\n```\n\n---\n\n## Common Workflow\n\n**Development Cycle:**\n```bash\n# 1. Write code\nvim burger_driver.sv\n\n# 2. Compile (check syntax)\nvcs -sverilog -ntb_opts uvm top.sv\n\n# 3. Run test\n./simv +UVM_TESTNAME=burger_test\n\n# 4. Debug with waveforms\n./simv +UVM_TEST NAME=burger_test -gui\n\n# 5. Regression (run all tests)\n./run_regression.sh\n```\n\n---\n\n## Makefile Example\n\n```makefile\n# Simulator choice\nSIM ?= vcs\n\n# Test selection\nTEST ?= burger_test\n\n# Source files\nSOURCES = top.sv burger_pkg.sv\n\nifeq ($(SIM),vcs)\n    compile:\n        vcs -sverilog -ntb_opts uvm $(SOURCES)\n    run:\n        ./simv +UVM_TESTNAME=$(TEST)\nendif\n\nifeq ($(SIM),xcelium)\n    run:\n        xrun -uvm $(SOURCES) +UVM_TESTNAME=$(TEST)\nendif\n\nclean:\n    rm -rf simv* csrc DVEfiles *.log\n```\n\n**Usage:**\n```bash\nmake SIM=vcs TEST=burger_test run\nmake SIM=xcelium TEST=stress_test run\n```\n\n---\n\n## Debugging Tips\n\n### 1. Enable UVM Debug Messages\n```bash\n+UVM_VERBOSITY=UVM_DEBUG\n```\n\n### 2. Dump Waveforms\nVCS:\n```bash\nvcs -debug_all top.sv\n./simv +UVM_TESTNAME=burger_test\ndve -vpd vcdplus.vpd &\n```\n\n### 3. UVM Topology\nAdd to your test:\n```systemverilog\nfunction void end_of_elaboration_phase(uvm_phase phase);\n  uvm_top.print_topology();\nendfunction\n```\n\n### 4. Config DB Dump\n```bash\n+UVM_CONFIG_DB_TRACE  # Show all config DB activity\n```\n\n---\n\n## EDA Playground (Online)\n\nDon't have a simulator? Use **EDA Playground**:\n1. Go to [edaplayground.com](https://edaplayground.com)\n2. Select \"UVM / OVM\" from testbench dropdown\n3. Select \"Synopsys VCS\" or \"Cadence Xcelium\"\n4. Paste your code\n5. Click \"Run\"\n\nPerfect for learning and sharing examples!\n\n---\n\n## Key Takeaways\n\n- **VCS**: Industry standard, powerful debug tools\n- **Xcelium**: Fast, single-command workflow\n- **Questa**: Free version available (ModelSim)\n- Use `+UVM_TESTNAME` to select which test runs\n- Use `+UVM_VERBOSITY` to control output detail\n- Makefiles automate the build process\n- EDA Playground for online experimentation\n\nYour restaurant is open for business! \ud83c\udf89",
+    "codeSnippet": "# Synopsys VCS\nvcs -sverilog -ntb_opts uvm top.sv -R +UVM_TESTNAME=burger_test\n\n# Cadence Xcelium\nxrun -uvm top.sv +UVM_TESTNAME=burger_test\n\n# Siemens Questa\nvsim top +UVM_TESTNAME=burger_test -do \"run -all\"\n",
+    "codeLanguage": "bash",
+    "quiz": null
+  },
+  {
+    "id": "complete_example",
+    "title": "The Grand Combo Meal",
+    "icon": "Package",
+    "analogy": {
+      "role": "Everything Together",
+      "description": "A complete, runnable UVM testbench in one file."
+    },
+    "contentMarkdown": "## Order Up! \ud83c\udf54\ud83c\udf5f\n\nYou asked for the **Grand Combo Meal**: A complete, fully functioning, copy-paste-runnable UVM testbench.\n\nI have packed the entire franchise\u2014from the Interface (Service Window) to the Test (Opening Day)\u2014into a single file. You can run this directly on **EDA Playground** (select Synopsys VCS or Cadence Xcelium) or your local simulator.\n\n## How to Run\n\nSave the code below as `uvm_burger_complete.sv` and run:\n\n**VCS:**\n```bash\nvcs -sverilog -ntb_opts uvm uvm_burger_complete.sv -R +UVM_TESTNAME=burger_test\n```\n\n**Xcelium:**\n```bash\nxrun -uvm uvm_burger_complete.sv +UVM_TESTNAME=burger_test\n```\n\n**Questa:**\n```bash\nvlog -sv uvm_burger_complete.sv +incdir+$UVM_HOME/src $UVM_HOME/src/uvm_pkg.sv\nvsim top +UVM_TESTNAME=burger_test -do \"run -all\"\n```\n\n## The Complete Code\n\n```systemverilog\n// =============================================================================\n//  \ud83c\udf54 THE UVMBURGER FRANCHISE - COMPLETE WORKING EXAMPLE\n// =============================================================================\n\n`include \"uvm_macros.svh\"\nimport uvm_pkg::*;\n\n// =============================================================================\n//  SECTION 1: THE PHYSICAL WORLD (The Kitchen Hardware)\n// =============================================================================\n\n// 1. The Service Window (Interface)\ninterface burger_if(input bit clk);\n  logic       rst_n;       // 0=Reset (Closed), 1=Active (Open)\n  logic [1:0] patty_type;  // 0=Beef, 1=Chicken, 2=Veggie\n  logic       valid_in;    // Customer placing order\n  logic [1:0] burger_out;  // The cooked burger\n  logic       valid_out;   // Order up!\nendinterface\n\n// 2. The Grill (DUT - Design Under Test)\n// Simple Logic: It takes 1 clock cycle to cook. Output = Input.\nmodule burger_kitchen(\n  input        clk,\n  input        rst_n,\n  input  [1:0] patty_type,\n  input        valid_in,\n  output reg [1:0] burger_out,\n  output reg       valid_out\n);\n  always @(posedge clk or negedge rst_n) begin\n    if (!rst_n) begin\n      burger_out <= 0;\n      valid_out  <= 0;\n    end else begin\n      // The cooking logic (Pass-through with 1 cycle delay)\n      valid_out  <= valid_in;\n      burger_out <= patty_type;\n    end\n  end\nendmodule\n\n// =============================================================================\n//  SECTION 2: THE FRANCHISE MANUAL (UVM Package)\n// =============================================================================\npackage burger_pkg;\n  import uvm_pkg::*;\n\n  // ---------------------------------------------------------------------------\n  //  PAGE 4: THE ORDER TICKET (Sequence Item)\n  // ---------------------------------------------------------------------------\n  class burger_item extends uvm_sequence_item;\n    rand bit [1:0] patty_type; // The order\n    bit [1:0]      burger_out; // The result (for checking)\n\n    // Menu Rules (Constraints)\n    constraint c_menu { patty_type inside {0, 1, 2}; }\n\n    `uvm_object_utils_begin(burger_item)\n      `uvm_field_int(patty_type, UVM_ALL_ON)\n      `uvm_field_int(burger_out, UVM_ALL_ON)\n    `uvm_object_utils_end\n\n    function new(string name = \"burger_item\");\n      super.new(name);\n    endfunction\n  endclass\n\n  // ---------------------------------------------------------------------------\n  //  PAGE 5: THE WAITER (Sequencer)\n  // ---------------------------------------------------------------------------\n  typedef uvm_sequencer #(burger_item) burger_sequencer;\n\n  // ---------------------------------------------------------------------------\n  //  PAGE 6: THE LINE COOK (Driver)\n  // ---------------------------------------------------------------------------\n  class burger_driver extends uvm_driver #(burger_item);\n    `uvm_component_utils(burger_driver)\n    virtual burger_if vif;\n\n    function new(string name, uvm_component parent);\n      super.new(name, parent);\n    endfunction\n\n    function void build_phase(uvm_phase phase);\n      super.build_phase(phase);\n      if (!uvm_config_db#(virtual burger_if)::get(this, \"\", \"vif\", vif))\n        `uvm_fatal(\"DRIVER\", \"No virtual interface found!\")\n    endfunction\n\n    task run_phase(uvm_phase phase);\n      vif.valid_in <= 0;\n      wait(vif.rst_n == 1);\n\n      forever begin\n        seq_item_port.get_next_item(req);\n        \n        @(posedge vif.clk);\n        vif.valid_in   <= 1;\n        vif.patty_type <= req.patty_type;\n        `uvm_info(\"CHEF\", $sformatf(\"Cooking Patty Type: %0d\", req.patty_type), UVM_HIGH)\n        \n        @(posedge vif.clk);\n        vif.valid_in <= 0;\n        seq_item_port.item_done();\n      end\n    endtask\n  endclass\n\n  // ---------------------------------------------------------------------------\n  //  PAGE 7: THE FOOD CRITIC (Monitor)\n  // ---------------------------------------------------------------------------\n  class burger_monitor extends uvm_monitor;\n    `uvm_component_utils(burger_monitor)\n    virtual burger_if vif;\n    uvm_analysis_port #(burger_item) item_collected_port;\n\n    function new(string name, uvm_component parent);\n      super.new(name, parent);\n      item_collected_port = new(\"item_collected_port\", this);\n    endfunction\n\n    function void build_phase(uvm_phase phase);\n      super.build_phase(phase);\n      if (!uvm_config_db#(virtual burger_if)::get(this, \"\", \"vif\", vif))\n        `uvm_fatal(\"MONITOR\", \"No interface found!\")\n    endfunction\n\n    task run_phase(uvm_phase phase);\n      forever begin\n        @(posedge vif.clk);\n        if (vif.valid_out) begin\n          burger_item item = burger_item::type_id::create(\"item\");\n          item.burger_out = vif.burger_out;\n          \n          `uvm_info(\"CRITIC\", $sformatf(\"I saw a burger! Type: %0d\", item.burger_out), UVM_MEDIUM)\n          item_collected_port.write(item);\n        end\n      end\n    endtask\n  endclass\n\n  // ---------------------------------------------------------------------------\n  //  PAGE 9: THE WORK STATION (Agent)\n  // ---------------------------------------------------------------------------\n  class burger_agent extends uvm_agent;\n    `uvm_component_utils(burger_agent)\n    \n    burger_sequencer sequencer;\n    burger_driver    driver;\n    burger_monitor   monitor;\n\n    function new(string name, uvm_component parent);\n      super.new(name, parent);\n    endfunction\n\n    function void build_phase(uvm_phase phase);\n      super.build_phase(phase);\n      monitor = burger_monitor::type_id::create(\"monitor\", this);\n      if (get_is_active() == UVM_ACTIVE) begin\n        sequencer = burger_sequencer::type_id::create(\"sequencer\", this);\n        driver    = burger_driver::type_id::create(\"driver\", this);\n      end\n    endfunction\n\n    function void connect_phase(uvm_phase phase);\n      if (get_is_active() == UVM_ACTIVE) begin\n        driver.seq_item_port.connect(sequencer.seq_item_export);\n      end\n    endfunction\n  endclass\n\n  // ---------------------------------------------------------------------------\n  //  PAGE 8: THE SHIFT MANAGER (Scoreboard)\n  // ---------------------------------------------------------------------------\n  class burger_scoreboard extends uvm_scoreboard;\n    `uvm_component_utils(burger_scoreboard)\n    uvm_analysis_imp #(burger_item, burger_scoreboard) item_export;\n\n    function new(string name, uvm_component parent);\n      super.new(name, parent);\n      item_export = new(\"item_export\", this);\n    endfunction\n\n    function void write(burger_item item);\n      if (item.burger_out inside {0, 1, 2}) begin\n        `uvm_info(\"MANAGER\", $sformatf(\"Valid Burger: %0d. Good!\", item.burger_out), UVM_LOW)\n      end else begin\n        `uvm_error(\"MANAGER\", \"BURNT!\")\n      end\n    endfunction\n  endclass\n\n  // ---------------------------------------------------------------------------\n  //  PAGE 10: THE RESTAURANT (Environment)\n  // ---------------------------------------------------------------------------\n  class burger_env extends uvm_env;\n    `uvm_component_utils(burger_env)\n    burger_agent      agent;\n    burger_scoreboard scoreboard;\n\n    function new(string name, uvm_component parent);\n      super.new(name, parent);\n    endfunction\n\n    function void build_phase(uvm_phase phase);\n      super.build_phase(phase);\n      agent      = burger_agent::type_id::create(\"agent\", this);\n      scoreboard = burger_scoreboard::type_id::create(\"scoreboard\", this);\n    endfunction\n\n    function void connect_phase(uvm_phase phase);\n      agent.monitor.item_collected_port.connect(scoreboard.item_export);\n    endfunction\n  endclass\n\n  // ---------------------------------------------------------------------------\n  //  THE MENU (Sequences)\n  // ---------------------------------------------------------------------------\n  class order_5_burgers extends uvm_sequence #(burger_item);\n    `uvm_object_utils(order_5_burgers)\n\n    function new(string name = \"order_5_burgers\");\n      super.new(name);\n    endfunction\n\n    task body();\n      repeat(5) begin\n        req = burger_item::type_id::create(\"req\");\n        start_item(req);\n        assert(req.randomize());\n        finish_item(req);\n      end\n    endtask\n  endclass\n\n  // ---------------------------------------------------------------------------\n  //  OPENING DAY (Test)\n  // ---------------------------------------------------------------------------\n  class burger_test extends uvm_test;\n    `uvm_component_utils(burger_test)\n    burger_env env;\n\n    function new(string name, uvm_component parent);\n      super.new(name, parent);\n    endfunction\n\n    function void build_phase(uvm_phase phase);\n      super.build_phase(phase);\n      env = burger_env::type_id::create(\"env\", this);\n    endfunction\n\n    task run_phase(uvm_phase phase);\n      order_5_burgers seq;\n      seq = order_5_burgers::type_id::create(\"seq\");\n\n      phase.raise_objection(this);\n      `uvm_info(\"TEST\", \"Restaurant is OPEN!\", UVM_LOW)\n      \n      seq.start(env.agent.sequencer);\n      \n      #100;\n      `uvm_info(\"TEST\", \"Restaurant is CLOSED!\", UVM_LOW)\n      phase.drop_objection(this);\n    endtask\n  endclass\n\nendpackage\n\n// =============================================================================\n//  SECTION 3: THE CONSTRUCTION SITE (Top Module)\n// =============================================================================\nmodule top;\n  import uvm_pkg::*;\n  import burger_pkg::*;\n\n  // 1. Generate Power (Clock)\n  bit clk;\n  always #5 clk = ~clk;\n\n  // 2. Reset Logic\n  bit rst_n;\n  initial begin\n    clk = 0;\n    rst_n = 0;\n    #20 rst_n = 1;\n  end\n\n  // 3. Instantiate Interface & DUT\n  burger_if vif(clk);\n  \n  burger_kitchen DUT(\n    .clk(vif.clk),\n    .rst_n(rst_n),\n    .patty_type(vif.patty_type),\n    .valid_in(vif.valid_in),\n    .burger_out(vif.burger_out),\n    .valid_out(vif.valid_out)\n  );\n\n  // 4. Pass Interface to UVM & Start Test\n  initial begin\n    assign vif.rst_n = rst_n;\n    uvm_config_db#(virtual burger_if)::set(null, \"*\", \"vif\", vif);\n    run_test();\n  end\nendmodule\n```\n\n## What This Does\n\n1. **Interface** - Defines the signals between testbench and DUT\n2. **DUT** - Simple 1-cycle delay burger cooker\n3. **Sequence Item** - The order ticket (burger type)\n4. **Driver** - Drives signals to the DUT\n5. **Monitor** - Observes what comes out\n6. **Scoreboard** - Checks if burgers are valid\n7. **Agent** - Groups driver, sequencer, monitor\n8. **Environment** - Contains agent and scoreboard\n9. **Test** - Orders 5 random burgers\n10. **Top Module** - Connects everything and starts simulation\n\n## Try It Yourself!\n\nCopy this code to **EDA Playground** and run it. You'll see:\n- 5 random orders being placed\n- The chef cooking them\n- The critic observing\n- The manager verifying quality\n\n**Welcome to UVM!** \ud83c\udf89",
+    "codeSnippet": "// Complete working example - ready to run!\n// VCS: vcs -sverilog -ntb_opts uvm uvm_burger_complete.sv -R +UVM_TESTNAME=burger_test\n// Xcelium: xrun -uvm uvm_burger_complete.sv +UVM_TESTNAME=burger_test\n",
+    "codeLanguage": "systemverilog",
+    "quiz": [
+      {
+        "question": "In the complete example, what does the DUT (burger_kitchen) do with the input?",
+        "options": [
+          "Inverts it",
+          "Passes it through with 1 cycle delay",
+          "Adds 1 to it",
+          "Randomizes it"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "How many burgers does the test sequence order?",
+        "options": [
+          "3",
+          "5",
+          "10",
+          "Random number"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the purpose of phase.raise_objection() and phase.drop_objection()?",
+        "options": [
+          "To generate random data",
+          "To control when the simulation ends",
+          "To compile the code",
+          "To reset the DUT"
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  {
+    "id": "final_quiz",
+    "title": "The Final Inspection",
+    "icon": "Award",
+    "analogy": {
+      "role": "Health Inspector's Final Exam",
+      "description": "Prove you're ready to run your own UVM franchise!"
+    },
+    "contentMarkdown": "## \ud83c\udfc6 The Final Inspection\n\nCongratulations on making it this far! You've learned how to run a complete UVM verification franchise. Now it's time to prove you're ready for the **Health Inspector's Final Exam**.\n\nThis quiz covers the entire UVM methodology using our burger shop analogies. Answer all questions correctly to earn your **Head Chef of Verification** certification!\n\n## What You've Mastered\n\nThroughout this course, you've learned:\n\n\u2705 **The Philosophy** - Why UVM beats the street stall approach  \n\u2705 **Object-Oriented Programming** - The ingredients of modern verification  \n\u2705 **Interfaces & Modports** - The service window with proper access control  \n\u2705 **UVM Components** - From sequence items to environments  \n\u2705 **The Top Module** - Where hardware meets software  \n\u2705 **Complete Testbench** - A working example you can run today  \n\n## Ready to Test Your Skills?\n\nThe quiz below tests your understanding of:\n- **UVM Fundamentals** - Core concepts and terminology\n- **Component Roles** - What each UVM class does\n- **Best Practices** - Why we do things the UVM way\n- **The Big Picture** - How everything fits together\n\nTake your time, and remember: In a real franchise, the health inspector doesn't accept \"almost correct\" burgers! \ud83c\udf54\n\n---\n\n**Good luck, future Head Chef!** \ud83d\udc68\u200d\ud83c\udf73\u2728",
+    "codeSnippet": null,
+    "codeLanguage": null,
+    "quiz": [
+      {
+        "question": "What is the primary benefit of using UVM over traditional Verilog testbenches?",
+        "options": [
+          "It's faster to compile",
+          "Standardization and reusability across projects",
+          "It uses less memory",
+          "It's easier to learn"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "In the Burger Shop analogy, what does the uvm_driver represent?",
+        "options": [
+          "The customer placing orders",
+          "The line cook driving signals to the DUT",
+          "The food critic observing quality",
+          "The shift manager checking results"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the purpose of uvm_config_db?",
+        "options": [
+          "To compile SystemVerilog code",
+          "To share configuration data and virtual interfaces across components",
+          "To generate random test patterns",
+          "To measure code coverage"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Which UVM phase is used to instantiate and configure components?",
+        "options": [
+          "run_phase",
+          "connect_phase",
+          "build_phase",
+          "extract_phase"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "In the restaurant analogy, what does the uvm_monitor do?",
+        "options": [
+          "Cooks the burgers",
+          "Takes customer orders",
+          "Silently observes and reports what's happening",
+          "Manages the kitchen staff"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is a sequence_item in UVM?",
+        "options": [
+          "A list of test cases",
+          "A transaction representing data to be driven or monitored",
+          "A type of monitor",
+          "A verification component"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does TLM stand for in UVM?",
+        "options": [
+          "Test Level Monitoring",
+          "Transaction Level Modeling",
+          "Testbench Logic Manager",
+          "Timing Level Measurement"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "In the Burger Shop, the uvm_sequencer is like a:",
+        "options": [
+          "Grill",
+          "Food critic",
+          "Waiter managing the flow of orders",
+          "Restaurant manager"
+        ],
+        "correct": 2
+      },
+      {
+        "question": "What is the purpose of raise_objection() in a UVM test?",
+        "options": [
+          "To report an error",
+          "To prevent simulation from ending prematurely",
+          "To randomize data",
+          "To connect components"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does a modport define in an interface?",
+        "options": [
+          "The clock frequency",
+          "Access permissions (input/output) for different components",
+          "The number of signals",
+          "The simulation time"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "In UVM, what is the scoreboard's primary job?",
+        "options": [
+          "Drive stimulus to the DUT",
+          "Compare expected vs. actual results",
+          "Monitor signals passively",
+          "Generate clock signals"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What does 'is_active' control in a uvm_agent?",
+        "options": [
+          "Whether the agent is powered on",
+          "Whether the agent drives stimulus or just monitors",
+          "The speed of the agent",
+          "The priority of the agent"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "In the restaurant analogy, what is the top module (module top)?",
+        "options": [
+          "The menu",
+          "The construction site where hardware meets software",
+          "The customer",
+          "The health inspector"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "What is the purpose of constraints in a sequence_item?",
+        "options": [
+          "To slow down simulation",
+          "To limit randomization to legal/meaningful values",
+          "To display debug messages",
+          "To connect components"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Which UVM component typically contains both an agent and a scoreboard?",
+        "options": [
+          "uvm_driver",
+          "uvm_test",
+          "uvm_env (environment)",
+          "uvm_sequencer"
+        ],
+        "correct": 2
+      }
+    ]
   }
 ]

@@ -8,6 +8,7 @@ import AnalogyBox from './components/AnalogyBox';
 import Navigation from './components/Navigation';
 import BurgerGraphic from './components/BurgerGraphic';
 import CommentSection from './components/CommentSection';
+import Quiz from './components/Quiz';
 import modulesData from './data/modules.json';
 
 function App() {
@@ -15,10 +16,14 @@ function App() {
   const currentModuleIndex = modulesData.findIndex(m => m.id === currentModuleId);
   const currentModule = modulesData[currentModuleIndex];
 
+  // Scroll to top when module changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentModuleId]);
+
   const handleNext = () => {
     if (currentModuleIndex < modulesData.length - 1) {
       setCurrentModuleId(modulesData[currentModuleIndex + 1].id);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -158,6 +163,11 @@ function App() {
                 language={currentModule.codeLanguage || 'systemverilog'}
               />
             </motion.div>
+          )}
+
+          {/* Quiz Section */}
+          {currentModule.quiz && (
+            <Quiz moduleId={currentModuleId} questions={currentModule.quiz} />
           )}
 
           {/* Comment Section */}

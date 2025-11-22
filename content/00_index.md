@@ -3,83 +3,124 @@ id: "roadmap"
 title: "The Roadmap"
 icon: "Map"
 analogy:
-  role: "The Menu"
-  description: "Your guide to becoming a Head Chef of Verification."
+  role: "The Franchise Manual"
+  description: "Your guide from Street Stall to Head Chef of Verification."
 code_snippet: |
-  // Your Journey Starts Here
+  // Your Journey: From Zero to UVM Hero
   module uvm_journey;
-    initial begin
-      $display("Loading Roadmap...");
-    end
+    initial $display("Welcome to the UVMBurger Franchise!");
   endmodule
 code_language: "systemverilog"
 ---
 
-## 📋 Phase 1: The Prep Work (Fundamentals)
-*Before we open the doors, we need to understand the business and prep the ingredients.*
+# 🍔 The UVMBurger Franchise Manual
 
-- **Page 1: The Franchise Philosophy**
-    - **Topic:** Why UVM?
-    - **Analogy:** The chaotic Street Stall (Verilog) vs. The Global Franchise (UVM).
-    - **Goal:** Understand standardization and reusability.
+**"From Street Stall to 5-Star Franchise"**
 
-- **Page 2: The Ingredients**
-    - **Topic:** SystemVerilog OOP Basics (Class, Object, Handle).
-    - **Analogy:** The Recipe vs. The Burger on the plate.
-    - **Goal:** Master `class`, `new()`, and `virtual interface`.
+Welcome to the team! You have been hired by **UVMBurger**, the most prestigious verification franchise in the world. This manual will take you from a trainee (Verilog User) to the **Head Chef** (UVM Expert).
 
-- **Page 3: The Kitchen Equipment**
-    - **Topic:** The DUT (Design Under Test) & Interfaces.
-    - **Analogy:** The Grill (ALU) and the Service Window (Interface).
-    - **Goal:** Understanding the static (RTL) vs. dynamic (Testbench) boundary.
+---
 
-## 👨‍🍳 Phase 2: The Staff (UVM Components)
-*Hire the team. Each person has a specific job description.*
+## Phase 1: The Fundamentals
 
-- **Page 4: The Order Ticket**
-    - **Topic:** `uvm_sequence_item` (Transaction).
-    - **Analogy:** The customer's order (Burger type, sides, drinks).
-    - **Goal:** Defining data fields (`rand`) and Menu Rules (`constraints`).
+*Understanding the philosophy and gathering the ingredients.*
 
-- **Page 5: The Waiter**
-    - **Topic:** `uvm_sequencer`.
-    - **Analogy:** The Traffic Cop / Waiter.
-    - **Goal:** Managing the flow of orders to the kitchen (Arbitration).
+### Chapter 1: The Franchise Philosophy
+- **Topic**: Why UVM?
+- **Analogy**: Street Stall vs. Global Franchise
+- **Goal**: Understand standardization, reusability, and automation
 
-- **Page 6: The Line Cook**
-    - **Topic:** `uvm_driver`.
-    - **Analogy:** The Chef who flips the meat.
-    - **Goal:** Converting High-Level Orders (Objects) into Pin Wiggles (Signals).
+### Chapter 2: The Ingredients
+- **Topic**: SystemVerilog OOP Basics
+- **Analogy**: Recipe vs. The Burger
+- **Goal**: Master classes, objects, inheritance, and polymorphism
 
-- **Page 7: The Food Critic**
-    - **Topic:** `uvm_monitor`.
-    - **Analogy:** The Silent Observer.
-    - **Goal:** Sampling signals passively and broadcasting what they see.
+### Chapter 3: The Physical Location
+- **Topic**: DUT, Interfaces, and Modports
+- **Analogy**: The Grill, Service Window, and Window Rules
+- **Goal**: Understand hardware/software boundary and access control
 
-## 👔 Phase 3: Management & Operations (Hierarchy)
-*Organize the staff into a functioning restaurant.*
+---
 
-- **Page 8: The Shift Manager**
-    - **Topic:** `uvm_scoreboard`.
-    - **Analogy:** Quality Control.
-    - **Goal:** Comparing the Order Ticket (Expected) vs. The Served Burger (Actual).
+## Phase 2: The Core Team
 
-- **Page 9: The Work Station**
-    - **Topic:** `uvm_agent`.
-    - **Analogy:** Grouping the Cook, Waiter, and Monitor into one station.
-    - **Goal:** Understanding `is_active` (Active Cooking vs. Passive Watching).
+*Meet the staff who make the restaurant run.*
 
-- **Page 10: The Grand Opening**
-    - **Topic:** `uvm_env` & `uvm_test`.
-    - **Analogy:** The Restaurant Building and The Health Inspection Day.
-    - **Goal:** Top-level assembly and starting the test.
+### Chapter 4: Meet the Team
+- **Topic**: Sequence Item, Sequencer, Driver, Monitor
+- **Analogy**: Order Ticket, Waiter, Line Cook, Food Critic
+- **Goal**: Understand the four core UVM components
 
-- **Page 11: The Franchise Launch**
-    - **Topic:** Execution Commands.
-    - **Analogy:** Turning on the Open Sign.
-    - **Goal:** Running the Simulators (VCS, Xcelium, Questa).
+### Chapter 5: The Work Station
+- **Topic**: UVM Agent
+- **Analogy**: The Organized Station
+- **Goal**: Group components, understand active vs. passive modes
 
-### 🏁 Certification
-Upon completion of all 11 pages, you will be promoted to **Head Chef of Verification**.
+---
 
-![UVMBurger Certification](images/CertifiedUVm.jpg)
+## Phase 3: Communication & Quality
+
+*How components talk and ensure quality.*
+
+### Chapter 6: Restaurant Communications
+- **Topic**: TLM Ports, Exports, FIFOs
+- **Analogy**: The Intercom System
+- **Goal**: Understand how components communicate without tight coupling
+
+### Chapter 7: Management & Quality Control
+- **Topic**: UVM Scoreboard
+- **Analogy**: The Shift Manager
+- **Goal**: Compare expected vs. actual results
+
+---
+
+## Phase 4: The Rules & Opening
+
+*Understanding the laws that govern the kitchen.*
+
+### Chapter 8: The Laws of the Kitchen
+- **Topic**: Components vs. Objects, Phasing, Config DB
+- **Analogy**: Staff vs. Food, The Schedule, The Bulletin Board
+- **Goal**: Master UVM mechanics and hierarchy
+
+### Chapter 9: The Grand Opening
+- **Topic**: Environment, Test, and Top Module
+- **Analogy**: Floor Plan, Opening Day, Construction Site
+- **Goal**: Bring everything together for the first simulation
+
+---
+
+## Phase 5: Launch & Mastery
+
+*Running the business and proving your expertise.*
+
+### Chapter 10: Operating Instructions
+- **Topic**: Simulator Commands
+- **Analogy**: Turning on the Open Sign
+- **Goal**: Run testbenches on VCS, Xcelium, and Questa
+
+### Chapter 11: The Grand Combo Meal
+- **Topic**: Complete Working Example
+- **Analogy**: Everything Together
+- **Goal**: Copy, paste, and run a full UVM testbench
+
+### Chapter 12: The Final Inspection 🏆
+- **Topic**: UVM Interview Questions
+- **Analogy**: Health Inspector's Final Exam
+- **Goal**: Prove you're ready to run your own verification franchise!
+
+---
+
+## 🎓 Your Certification Path
+
+Upon completion of all 12 chapters, you will be promoted to **Head Chef of Verification**.
+
+You'll be able to:
+✅ Build reusable verification environments  
+✅ Debug complex testbenches  
+✅ Interview confidently for verification roles  
+✅ Verify chips from simple ALUs to complex SoCs  
+
+---
+
+**Let's get cooking!** 🍔👨‍🍳

@@ -9,6 +9,28 @@ code_snippet: |
   // Example of standardized reporting
   `uvm_info("FRANCHISE", "Welcome to UVMBurger! The grill is hot.", UVM_LOW)
 code_language: "systemverilog"
+quiz:
+  - question: "What does UVM stand for?"
+    options:
+      - "Universal Verification Methodology"
+      - "Unified Verification Model"
+      - "Universal Validation Method"
+      - "Unified Validation Methodology"
+    correct: 0
+  - question: "What is the main advantage of UVM over traditional Verilog testbenches?"
+    options:
+      - "It's faster to write"
+      - "Standardization and reusability"
+      - "It requires less memory"
+      - "It's easier to debug"
+    correct: 1
+  - question: "In the Burger Shop analogy, what does the 'Franchise Manual' represent?"
+    options:
+      - "The DUT specification"
+      - "The testbench code"
+      - "The UVM standard"
+      - "The simulation tool"
+    correct: 2
 ---
 
 ## The Chaos of the Street Stall (Verilog Testbenches)

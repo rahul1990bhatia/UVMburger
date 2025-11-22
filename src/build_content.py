@@ -24,7 +24,8 @@ def build_content():
                 "analogy": post.get("analogy"),
                 "contentMarkdown": post.content,
                 "codeSnippet": post.get("code_snippet"),
-                "codeLanguage": post.get("code_language")
+                "codeLanguage": post.get("code_language"),
+                "quiz": post.get("quiz")
             }
             modules.append(module_data)
             
