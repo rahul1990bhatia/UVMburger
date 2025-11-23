@@ -6,36 +6,96 @@ analogy:
   role: "The Recipe"
   description: "Class = Recipe Card. Object = The Burger. Inheritance = Secret Menu."
 code_snippet: |
-  // The Base Recipe
-  virtual class Burger;
+  // The Recipe (Class)
+  class Burger;
     rand bit [3:0] patties;
-    virtual function void cook();
+    
+    function void cook();
       $display("Grilling %0d patties...", patties);
     endfunction
   endclass
 
-  // The Extended Recipe (Inheritance)
-  class CheeseBurger extends Burger;
-    bit has_cheese = 1;
-    function void cook();
-      super.cook(); // Do the basic grilling first
-      $display("Melting the cheese... Delicious!");
-    endfunction
-  endclass
+  // The Burger (Object)
+  Burger my_lunch;
+  initial begin
+    my_lunch = new();  // Create the object
+    my_lunch.cook();   // Use the object
+  end
 code_language: "systemverilog"
 ---
 
 ## Class vs. Object (The Blueprint vs. The Building)
+
 To run a franchise, you need to understand Object-Oriented Programming (OOP).
-- **Class (The Recipe Card):** This is just a piece of paper. It lists ingredients (variables) and cooking steps (functions). You cannot eat the paper.
-- **Object (The Burger):** This is the physical, edible thing created from the recipe. `Burger my_lunch = new();` creates a real burger object in memory.
+
+### The Analogy
+
+| Term | Analogy | Description |
+| :--- | :--- | :--- |
+| **Class** | **The Recipe Card** | Just a piece of paper. Lists ingredients and steps. You cannot eat it. |
+| **Object** | **The Burger** | The physical, edible thing created from the recipe. |
+| **Handle** | **The Order Number** | A reference to the object. |
+
+### The Code
+
+```systemverilog
+// The RECIPE (Class) - Just a blueprint on paper
+class Burger;
+  rand bit [3:0] patties;    // Variable (ingredient)
+  rand bit       has_cheese; // Another variable
+  
+  // Method (cooking instruction)
+  function void cook();
+    $display("Grilling %0d patties...", patties);
+  endfunction
+endclass
+
+// The BURGER (Object) - The real thing you can eat!
+Burger my_lunch;           // Declare a handle
+my_lunch = new();          // Actually CREATE the object
+my_lunch.cook();           // USE the object
+```
+
+**Key Point**: A class is just a template. You must call `new()` to create an actual object.
 
 ## Inheritance (The Secret Menu)
+
 We don't rewrite the entire menu just to add a slice of cheese. We take the existing `Burger` recipe and **extend** it.
-- We create a new class `CheeseBurger` that inherits everything from `Burger`.
-- We don't need to re-define "bun" or "meat". We just add `bit has_cheese = 1;`.
+
+```systemverilog
+// Base burger has everything standard
+class Burger;
+  rand bit [1:0] patty_type;
+  bit has_bun = 1;
+  
+  virtual function void prepare();
+    $display("Basic burger preparation");
+  endfunction
+endclass
+
+// CheeseBurger EXTENDS Burger - gets everything for free!
+class CheeseBurger extends Burger;
+  bit has_cheese = 1;  // Add new ingredient
+  
+  // Override the preparation
+  function void prepare();
+    super.prepare();   // Do base preparation first
+    $display("Adding melted cheese!");
+  endfunction
+endclass
+```
 
 ## Polymorphism (The Manager's Magic)
+
 The Manager (Testbench) doesn't want to know if it's a Hamburger or a Cheeseburger. They just want to shout "COOK IT!".
-- **Virtual Functions:** By marking `cook()` as `virtual`, we allow child classes to override it.
-- If the Manager holds a generic `Burger` handle that points to a `CheeseBurger`, calling `cook()` will run the **Cheeseburger's** instructions (melting cheese).
+
+```systemverilog
+// Manager holds a generic Burger handle
+Burger order;
+
+// But it can point to ANY burger type!
+order = new CheeseBurger();  // Polymorphism!
+order.prepare();              // Calls CheeseBurger's prepare()!
+```
+
+**Why This Matters**: Your testbench can handle different transaction types without changing code.

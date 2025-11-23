@@ -39,6 +39,28 @@ quiz:
 
 ## 1. The Order Ticket (`uvm_sequence_item`)
 
+### The Data Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                        STIMULUS GENERATION                          │
+│  ┌──────────┐    ┌────────────┐    ┌──────────┐    ┌─────────────┐  │
+│  │ Sequence │───▶│  Sequencer │───▶│  Driver  │───▶│     DUT     │  │
+│  │ (Menu)   │    │  (Waiter)  │    │  (Chef)  │    │   (Grill)   │  │
+│  └──────────┘    └────────────┘    └──────────┘    └──────┬──────┘  │
+│       │                                                    │        │
+│       │          Sequence Item = Order Ticket              │        │
+│       │                                                    ▼        │
+│  ┌────┴────────────────────────────────────────────────────────┐    │
+│  │                       CHECKING                              │    │
+│  │  ┌──────────┐         ┌────────────┐         ┌───────────┐  │    │
+│  │  │ Monitor  │────────▶│ Scoreboard │◀────────│ Reference │  │    │
+│  │  │ (Critic) │         │ (Manager)  │         │   Model   │  │    │
+│  │  └──────────┘         └────────────┘         └───────────┘  │    │
+│  └─────────────────────────────────────────────────────────────┘    │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
 The **sequence_item** is the **transaction** - the data packet traveling through our system. Think of it as **the customer's order ticket**.
 
 It's not a person; it's just **data**.

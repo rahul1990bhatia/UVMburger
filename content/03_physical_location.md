@@ -42,6 +42,33 @@ quiz:
 
 The **Design Under Test (DUT)** is the hardware module we're verifying. Think of it as **the grill** in our burger shop - it's **static**, bolted to the floor, and does the actual cooking.
 
+### The Architecture Overview
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                      TOP MODULE (module top)                 │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │                  STATIC WORLD (Hardware)               │  │
+│  │   ┌─────────┐      ┌───────────┐      ┌─────────┐     │  │
+│  │   │  Clock  │──────│ Interface │──────│   DUT   │     │  │
+│  │   │  Reset  │      │  (Wire    │      │ (Grill) │     │  │
+│  │   │Generator│      │  Bundle)  │      │         │     │  │
+│  │   └─────────┘      └─────┬─────┘      └─────────┘     │  │
+│  └──────────────────────────┼────────────────────────────┘  │
+│                             │                                │
+│              uvm_config_db  │  (The Bulletin Board)          │
+│                             ▼                                │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │                 DYNAMIC WORLD (UVM Classes)            │  │
+│  │   ┌─────────┐   ┌─────────┐   ┌─────────────────┐      │  │
+│  │   │  Test   │───│   Env   │───│ Agent/Scoreboard│      │  │
+│  │   └─────────┘   └─────────┘   └─────────────────┘      │  │
+│  └────────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### The DUT Code
+
 ```systemverilog
 module burger_kitchen(
   input        clk,

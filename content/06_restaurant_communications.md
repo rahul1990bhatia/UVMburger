@@ -21,6 +21,31 @@ In a busy restaurant, people can't just shout across the room. We need an **orga
 
 This is **TLM (Transaction Level Modeling)** - the method UVM components use to pass data without direct function calls.
 
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                    TLM COMMUNICATION TYPES                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  PUT/GET (1:1 Connection)                                       │
+│  ┌──────────┐    put()    ┌──────────┐                          │
+│  │ Producer │────────────▶│ Consumer │                          │
+│  └──────────┘             └──────────┘                          │
+│                                                                 │
+│  ANALYSIS PORT (1:Many Broadcast)                               │
+│  ┌──────────┐             ┌──────────┐                          │
+│  │          │  write()   ▶│Subscriber│                          │
+│  │ Monitor  │────┬───────▶│Scoreboard│                          │
+│  │          │    └───────▶│ Coverage │                          │
+│  └──────────┘             └──────────┘                          │
+│                                                                 │
+│  TLM FIFO (Buffered Communication)                              │
+│  ┌──────────┐   ┌──────┐   ┌──────────┐                         │
+│  │   Fast   │──▶│ FIFO │──▶│   Slow   │                         │
+│  │ Producer │   │Buffer│   │ Consumer │                         │
+│  └──────────┘   └──────┘   └──────────┘                         │
+└─────────────────────────────────────────────────────────────────┘
+```
+
 ## The Problem: Tight Coupling
 
 **Bad approach:**
